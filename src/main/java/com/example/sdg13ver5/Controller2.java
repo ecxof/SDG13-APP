@@ -1,24 +1,13 @@
 package com.example.sdg13ver5;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.controlsfx.control.textfield.TextFields;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,15 +16,14 @@ import java.util.stream.Collectors;
 
 public class Controller2 implements Initializable {
 
-    //Array For Storing Data For SearchBar
+    // Array For Storing Data For SearchBar
     ArrayList<String> words = new ArrayList<>(
             Arrays.asList("education and awareness-rising",
                     "human and institutional capacity",
                     "mitigation planning",
                     "adaptation planning",
                     "impact reduction",
-                    "early warning")
-    );
+                    "early warning"));
     @FXML
     Stage stage;
 
@@ -50,40 +38,40 @@ public class Controller2 implements Initializable {
     @FXML
     private ListView<String> listview;
 
-    //Get Text And Clear Text From SearchBar
+    // Get Text And Clear Text From SearchBar
     @FXML
     public void search() {
         listview.getItems().clear();
-        listview.getItems().addAll(searchList(searchbar2.getText(),words));
+        listview.getItems().addAll(searchList(searchbar2.getText(), words));
     }
 
-    //Handle Mouse Click Event And Retrieve Data
+    // Handle Mouse Click Event And Retrieve Data
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listview.getItems().addAll(words);
         listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent click) {
-                if (click.getClickCount() == 2){
+                if (click.getClickCount() == 2) {
                     String selectednode = String.valueOf(listview.getSelectionModel().getSelectedItems());
                     try {
                         controller.searchvalue(selectednode);
-                    }catch(IOException exception) {exception.printStackTrace();}
+                    } catch (IOException exception) {
+                        exception.printStackTrace();
+                    }
                 }
             }
         });
     }
 
-    //Search Logic
+    // Search Logic
     private List<String> searchList(String searchWords, List<String> listOfStrings) {
 
         List<String> searchWordsArray = Arrays.asList(searchWords.trim().split(" "));
 
         return listOfStrings.stream().filter(input -> {
-            return searchWordsArray.stream().allMatch(word ->
-                    input.toLowerCase().contains(word.toLowerCase()));
+            return searchWordsArray.stream().allMatch(word -> input.toLowerCase().contains(word.toLowerCase()));
         }).collect(Collectors.toList());
     }
 
 }
-

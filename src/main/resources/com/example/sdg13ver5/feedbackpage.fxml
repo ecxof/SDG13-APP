@@ -3,37 +3,42 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="640.0" style="-fx-background-color: #D1FFBD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="640.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
    <children>
-      <Pane layoutX="167.0" layoutY="53.0" prefHeight="440.0" prefWidth="300.0" style="-fx-background-color: White; -fx-background-radius: 30;">
-         <effect>
-            <Shadow />
-         </effect>
-      </Pane>
-      <Pane layoutX="170.0" layoutY="50.0" prefHeight="440.0" prefWidth="300.0" style="-fx-background-color: White; -fx-background-radius: 30;">
+      <!-- Card with shadow -->
+      <Pane layoutX="100.0" layoutY="40.0" prefHeight="460.0" prefWidth="440.0" styleClass="card" style="-fx-background-color: white; -fx-background-radius: 20;">
          <children>
-            <Text fill="#023020" layoutX="75.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Rate US ">
+            <!-- Close button (×) -->
+            <Button layoutX="396.0" layoutY="4.0" mnemonicParsing="false" onAction="#closeFeedback" text="✕" styleClass="btn-close" />
+            <!-- Title -->
+            <Text fill="#166534" layoutX="130.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Feedback">
                <font>
-                  <Font name="Arial Black" size="17.0" />
+                  <Font name="Arial Bold" size="32.0" />
                </font>
             </Text>
-            <Text fill="#023020" layoutX="43.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FEEDBACK">
+            <!-- Star rating -->
+            <Text fill="#1F2937" layoutX="140.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please rate us">
                <font>
-                  <Font name="Berlin Sans FB Bold" size="37.0" />
+                  <Font name="Arial Bold" size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="feedname" layoutX="17.0" layoutY="130.0" prefHeight="38.0" prefWidth="265.0" promptText="Name" />
-            <TextField fx:id="feedsugg" alignment="TOP_LEFT" layoutX="18.0" layoutY="176.0" prefHeight="209.0" prefWidth="265.0" promptText="Suggestion" />
-            <Button layoutX="230.0" layoutY="392.0" mnemonicParsing="false" onAction="#topostfeedback" style="-fx-background-color: #023020;" text="Submit" textFill="WHITE" />
-            <Label fx:id="feed_label" layoutX="20.0" layoutY="396.0" textFill="RED" />
-            <Rating layoutX="62.0" layoutY="86.0" rating="3.0" />
+            <Rating layoutX="112.0" layoutY="90.0" rating="3.0" />
+            <!-- External label: Name -->
+            <Label layoutX="24.0" layoutY="138.0" text="Name" styleClass="label-text" />
+            <TextField fx:id="feedname" layoutX="24.0" layoutY="158.0" prefHeight="38.0" prefWidth="392.0" promptText="Your name" styleClass="text-field" />
+            <!-- External label: Suggestion -->
+            <Label layoutX="24.0" layoutY="206.0" text="Suggestion" styleClass="label-text" />
+            <TextField fx:id="feedsugg" alignment="TOP_LEFT" layoutX="24.0" layoutY="226.0" prefHeight="160.0" prefWidth="392.0" promptText="Share your thoughts..." styleClass="text-field" />
+            <!-- Error label -->
+            <Label fx:id="feed_label" layoutX="24.0" layoutY="398.0" styleClass="error-text" />
+            <!-- Submit button (right-aligned, 16px padding) -->
+            <Button layoutX="328.0" layoutY="400.0" mnemonicParsing="false" onAction="#topostfeedback" text="Submit" styleClass="btn-primary" prefWidth="88.0" />
          </children>
       </Pane>
    </children>

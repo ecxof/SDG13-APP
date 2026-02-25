@@ -7,24 +7,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #dbdbdb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="500.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
    <children>
-      <Label layoutX="22.0" layoutY="41.0" text="https://sdgs.un.org/goals/goal13">
-         <font>
-            <Font size="14.0" />
-         </font>
+      <Label layoutX="22.0" layoutY="14.0" text="Share link" styleClass="share-title">
       </Label>
-      <Label layoutX="22.0" layoutY="14.0" text="Link">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
+      <Label layoutX="22.0" layoutY="44.0" text="https://sdgs.un.org/goals/goal13" styleClass="share-url">
       </Label>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="436.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="436.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/copy.png" />
          </image>
       </ImageView>
-      <Button layoutX="436.0" layoutY="21.0" mnemonicParsing="false" onAction="#copy_to_clip" opacity="0.0" prefHeight="40.0" prefWidth="40.0" text="Button" />
-      <Label fx:id="successcopied" layoutX="22.0" layoutY="61.0" prefHeight="17.0" prefWidth="118.0" textFill="#1b8c15" />
+      <Button layoutX="436.0" layoutY="21.0" mnemonicParsing="false" onAction="#copy_to_clip" opacity="0.0" prefHeight="40.0" prefWidth="40.0" text="Button" accessibleText="Copy share link to clipboard" />
+      <Label fx:id="successcopied" layoutX="22.0" layoutY="72.0" prefHeight="17.0" prefWidth="200.0" styleClass="share-success" />
    </children>
 </Pane>

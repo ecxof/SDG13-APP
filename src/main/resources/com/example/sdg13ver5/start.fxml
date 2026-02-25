@@ -12,23 +12,28 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
    <children>
+      <!-- Hero image -->
       <ImageView fitHeight="459.0" fitWidth="578.0" layoutX="62.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/409-grassy-globe.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6f0b6" height="360.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="360.0" layoutX="181.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+      <!-- Dark overlay for hero image readability -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="rgba(0,0,0,0.45)" height="360.0" layoutX="62.0" width="578.0" mouseTransparent="true" />
+      <!-- Left panel frosted background -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="360.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="220.0" style="-fx-fill: rgba(243,244,246,0.95);" />
+      <!-- Gradient fade -->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="360.0" layoutX="200.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
          <fill>
-            <LinearGradient endX="1.0" endY="0.4597156398104265" startX="0.6303317535545023" startY="0.44075829383886256">
+            <LinearGradient endX="1.0" endY="0.46" startX="0.63" startY="0.44">
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.902400016784668" green="0.9399999976158142" blue="0.7143999934196472" />
+                        <Color red="0.953" green="0.957" blue="0.941" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
@@ -40,25 +45,31 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="26.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+      <!-- Logo -->
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="26.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/Sustainable_Development_Goal_13.png" />
          </image>
       </ImageView>
-      <TextField fx:id="username" layoutX="25.0" layoutY="145.0" prefHeight="25.0" prefWidth="180.0" promptText="Username">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></TextField>
-      <Button layoutX="25.0" layoutY="215.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="55.0" text="Login">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button layoutX="90.0" layoutY="215.0" mnemonicParsing="false" onAction="#logtoadmin" prefHeight="25.0" prefWidth="55.0" text="Admin">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Text layoutX="25.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
-      <Label fx:id="invalid_user_pass" layoutX="26.0" layoutY="247.0" textFill="RED" />
-      <PasswordField fx:id="password" layoutX="25.0" layoutY="180.0" prefHeight="25.0" prefWidth="180.0" promptText="Password" />
+      <!-- External Label: Username -->
+      <Label layoutX="25.0" layoutY="112.0" text="Username" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1F2937; -fx-font-family: Arial;" />
+      <TextField fx:id="username" layoutX="25.0" layoutY="132.0" prefHeight="36.0" prefWidth="180.0" promptText="Enter username" styleClass="text-field" />
+      <!-- External Label: Password -->
+      <Label layoutX="25.0" layoutY="178.0" text="Password" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1F2937; -fx-font-family: Arial;" />
+      <!-- Password field (hidden when toggle active) -->
+      <PasswordField fx:id="password" layoutX="25.0" layoutY="198.0" prefHeight="36.0" prefWidth="155.0" promptText="Enter password" styleClass="password-field" />
+      <!-- Plain-text password field (visible when toggled) -->
+      <TextField fx:id="passwordVisible" layoutX="25.0" layoutY="198.0" prefHeight="36.0" prefWidth="155.0" promptText="Enter password" styleClass="text-field" visible="false" />
+      <!-- Password reveal toggle: uses text labels set programmatically -->
+      <Button fx:id="togglePasswordBtn" layoutX="183.0" layoutY="198.0" mnemonicParsing="false" onAction="#togglePassword" prefHeight="36.0" prefWidth="22.0" text="O" style="-fx-background-color: transparent; -fx-text-fill: #6B7280; -fx-font-size: 16px; -fx-padding: 0; -fx-cursor: hand; -fx-font-family: Arial;" />
+      <!-- Buttons row -->
+      <Button layoutX="25.0" layoutY="252.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="90.0" text="Login" styleClass="btn-primary">
+         <cursor><Cursor fx:constant="HAND" /></cursor>
+      </Button>
+      <Button layoutX="125.0" layoutY="252.0" mnemonicParsing="false" onAction="#logtoadmin" prefHeight="36.0" prefWidth="100.0" minWidth="100.0" text="Admin" styleClass="btn-secondary">
+         <cursor><Cursor fx:constant="HAND" /></cursor>
+      </Button>
+      <!-- Error message -->
+      <Label fx:id="invalid_user_pass" layoutX="26.0" layoutY="298.0" styleClass="error-text" />
    </children>
 </AnchorPane>

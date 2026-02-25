@@ -1,0 +1,779 @@
+/* ============================================================
+   SDG-13 Climate Action — Global Stylesheet
+   Version: 2.0.0  |  Token-driven design system
+   See tokens.json for the canonical token source.
+   ============================================================ */
+
+/* --- Design Tokens (Root Variables) --- */
+.root {
+    /* ── Colors ── */
+    -fx-primary: #166534;
+    -fx-primary-hover: #15803d;
+    -fx-primary-dark: #14532d;
+    -fx-primary-light: #F0FDF4;
+    -fx-primary-lighter: #DCFCE7;
+
+    -fx-body-text: #1F2937;
+    -fx-body-bg: #F3F4F6;
+    -fx-card-bg: #FFFFFF;
+
+    -fx-border-default: #D1D5DB;
+    -fx-border-focus: #166534;
+    -fx-error: #B91C1C;
+    -fx-error-bg: #FEF2F2;
+    -fx-success: #166534;
+    -fx-success-bg: #F0FDF4;
+    -fx-focus-ring: #2563EB;
+
+    -fx-neutral-400: #9CA3AF;
+    -fx-neutral-500: #6B7280;
+    -fx-neutral-600: #4B5563;
+    -fx-neutral-700: #374151;
+
+    -fx-nav-bg: #E5E7EB;
+    -fx-nav-active-bar: #166534;
+    -fx-nav-hover: #D1D5DB;
+    -fx-shadow-color: rgba(0, 0, 0, 0.12);
+
+    /* ── Typography ── */
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #1F2937;
+
+    /* ── Spacing (4px base unit) ── */
+    -fx-spacing-1: 4;
+    -fx-spacing-2: 8;
+    -fx-spacing-3: 12;
+    -fx-spacing-4: 16;
+    -fx-spacing-5: 20;
+    -fx-spacing-6: 24;
+    -fx-spacing-8: 32;
+
+    /* ── Radii ── */
+    -fx-radius-sm: 4;
+    -fx-radius-md: 6;
+    -fx-radius-lg: 12;
+    -fx-radius-xl: 16;
+    -fx-radius-2xl: 20;
+
+    /* ── Animation (JavaFX uses Duration in code) ── */
+    /* Reference only — durations applied in Java:
+       fast = 100ms, normal = 200ms, slow = 300ms */
+}
+
+/* --- Global Background --- */
+.body-bg {
+    -fx-background-color: -fx-body-bg;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.hero-text {
+    -fx-font-size: 64px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.h1 {
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.h2 {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.h3 {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.body-text {
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-body-text;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.label-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-body-text;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.caption-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-neutral-500;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.small-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-neutral-500;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+/* Primary Button: filled green with white text */
+.btn-primary {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 24 10 24;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-min-height: 44;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.btn-primary:hover {
+    -fx-background-color: -fx-primary-hover;
+}
+
+.btn-primary:pressed {
+    -fx-background-color: -fx-primary-dark;
+}
+
+.btn-primary:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+}
+
+.btn-primary:disabled {
+    -fx-background-color: -fx-neutral-400;
+    -fx-text-fill: #E5E7EB;
+    -fx-cursor: default;
+}
+
+/* Secondary Button: outlined with green border */
+.btn-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primary;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20 10 20;
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-min-height: 44;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: -fx-primary-light;
+    -fx-text-fill: -fx-primary-hover;
+    -fx-border-color: -fx-primary-hover;
+}
+
+.btn-secondary:pressed {
+    -fx-background-color: -fx-primary-lighter;
+}
+
+.btn-secondary:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+}
+
+/* Danger Button: for exit/destructive actions */
+.btn-danger {
+    -fx-background-color: -fx-neutral-500;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 24 10 24;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-min-height: 44;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.btn-danger:hover {
+    -fx-background-color: -fx-neutral-600;
+}
+
+.btn-danger:pressed {
+    -fx-background-color: -fx-neutral-700;
+}
+
+.btn-danger:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+}
+
+/* Close Button (×) for modals */
+.btn-close {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-neutral-500;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10 4 10;
+    -fx-cursor: hand;
+    -fx-background-radius: 50;
+}
+
+.btn-close:hover {
+    -fx-background-color: -fx-body-bg;
+    -fx-text-fill: -fx-body-text;
+}
+
+.btn-close:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+}
+
+/* Toggle Button (☰ hamburger for nav collapse) */
+.btn-toggle {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-body-text;
+    -fx-font-size: 22px;
+    -fx-padding: 8 12 8 12;
+    -fx-cursor: hand;
+}
+
+.btn-toggle:hover {
+    -fx-background-color: -fx-nav-hover;
+    -fx-background-radius: 6;
+}
+
+.btn-toggle:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+}
+
+/* Password toggle button */
+.btn-password-toggle {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-neutral-500;
+    -fx-font-size: 16px;
+    -fx-padding: 4 8 4 8;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.btn-password-toggle:hover {
+    -fx-text-fill: -fx-body-text;
+}
+
+.btn-password-toggle:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+}
+
+/* Search nav button (replaces inline style on search button) */
+.btn-search {
+    -fx-background-color: -fx-neutral-500;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 16 12 20;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Arial";
+}
+
+.btn-search:hover {
+    -fx-background-color: -fx-neutral-600;
+}
+
+.btn-search:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-insets: 2;
+}
+
+/* Exit button in nav rail (replaces inline style) */
+.btn-exit {
+    -fx-background-color: -fx-neutral-500;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Arial";
+}
+
+.btn-exit:hover {
+    -fx-background-color: -fx-neutral-600;
+}
+
+.btn-exit:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-insets: 2;
+}
+
+/* Link-style button (for card CTAs) */
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 18 0 0 0;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.btn-link-primary {
+    -fx-text-fill: -fx-primary;
+}
+
+.btn-link-primary:hover {
+    -fx-text-fill: -fx-primary-hover;
+}
+
+.btn-link-blue {
+    -fx-text-fill: #3B82F6;
+}
+
+.btn-link-blue:hover {
+    -fx-text-fill: #2563EB;
+}
+
+/* ============================================================
+   NAVIGATION RAIL
+   ============================================================ */
+
+.nav-rail {
+    -fx-background-color: -fx-nav-bg;
+}
+
+/* Nav buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-body-text;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 16 12 20;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Arial";
+}
+
+.nav-button:hover {
+    -fx-background-color: -fx-nav-hover;
+}
+
+.nav-button:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-insets: 2;
+}
+
+/* Active nav button: left green bar */
+.nav-button-active {
+    -fx-background-color: -fx-primary-light;
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: bold;
+    -fx-border-color: -fx-primary transparent transparent transparent;
+    -fx-border-width: 0 0 0 4;
+    -fx-border-insets: 0;
+    -fx-padding: 12 16 12 16;
+}
+
+/* Admin title in nav rail */
+.admin-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-fill: -fx-body-text;
+}
+
+/* ============================================================
+   FORM FIELDS
+   ============================================================ */
+
+.text-field,
+.password-field,
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: -fx-border-default;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12 8 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-body-text;
+    -fx-prompt-text-fill: -fx-neutral-400;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(22, 101, 52, 0.15), 4, 0, 0, 0);
+}
+
+/* Error state for form fields */
+.field-error {
+    -fx-border-color: -fx-error;
+    -fx-border-width: 2;
+}
+
+.field-error:focused {
+    -fx-border-color: -fx-error;
+    -fx-effect: dropshadow(gaussian, rgba(185, 28, 28, 0.15), 4, 0, 0, 0);
+}
+
+/* Error label text */
+.error-text {
+    -fx-text-fill: -fx-error;
+    -fx-font-size: 13px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* Success label text */
+.success-text {
+    -fx-text-fill: -fx-success;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ============================================================
+   CARDS & SHADOWS
+   ============================================================ */
+
+.card {
+    -fx-background-color: -fx-card-bg;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 24, 0, 0, 8);
+}
+
+.card-elevated {
+    -fx-background-color: -fx-card-bg;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.20), 30, 0, 0, 8);
+}
+
+.card-shadow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 24, 0, 0, 8);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header-title {
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0, 0, 2);
+}
+
+/* Dark overlay for hero images */
+.hero-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.50);
+}
+
+.hero-overlay-light {
+    -fx-background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   CONTENT PAGES
+   ============================================================ */
+
+.content-banner {
+    -fx-background-color: -fx-primary;
+}
+
+.content-title {
+    -fx-font-size: 44px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-text-fill: white;
+}
+
+.content-area {
+    -fx-background-color: -fx-body-bg;
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+.search-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-fill: -fx-body-text;
+}
+
+/* Highlight style for live search matches */
+.search-highlight {
+    -fx-background-color: #FEF9C3;
+    -fx-background-radius: 2;
+}
+
+/* ============================================================
+   LIST VIEW
+   ============================================================ */
+
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: -fx-border-default;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.list-view .list-cell {
+    -fx-text-fill: -fx-body-text;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12 8 12;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: -fx-primary-lighter;
+    -fx-text-fill: -fx-primary;
+}
+
+.list-view .list-cell:focused {
+    -fx-background-color: -fx-primary-light;
+}
+
+/* ============================================================
+   STAR RATING (ControlsFX)
+   ============================================================ */
+
+.rating {
+    -fx-cursor: hand;
+}
+
+/* ============================================================
+   FEEDBACK CARD
+   ============================================================ */
+
+.feedback-card {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 24, 0, 0, 8);
+}
+
+/* Feedback title */
+.feedback-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-fill: -fx-primary;
+}
+
+/* ============================================================
+   GENERAL FOCUS RING
+   ============================================================ */
+
+.button:focused {
+    -fx-border-color: -fx-focus-ring;
+    -fx-border-width: 2;
+    -fx-border-radius: 4;
+}
+
+/* ============================================================
+   LOGIN PAGE
+   ============================================================ */
+
+.login-bg {
+    -fx-background-color: -fx-body-bg;
+}
+
+.login-panel {
+    -fx-background-color: rgba(243, 244, 246, 0.95);
+}
+
+/* ============================================================
+   SCROLL PANE
+   ============================================================ */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: -fx-neutral-400;
+    -fx-background-radius: 4;
+}
+
+.scroll-pane .scroll-bar .thumb:hover {
+    -fx-background-color: -fx-neutral-500;
+}
+
+/* ============================================================
+   LOADING / SPINNER
+   ============================================================ */
+
+.loading-overlay {
+    -fx-background-color: rgba(243, 244, 246, 0.85);
+}
+
+.spinner {
+    -fx-border-color: -fx-primary transparent transparent transparent;
+    -fx-border-width: 3;
+    -fx-border-radius: 50;
+    -fx-background-color: transparent;
+    -fx-pref-width: 32;
+    -fx-pref-height: 32;
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+
+.toast {
+    -fx-background-radius: 8;
+    -fx-padding: 12 20 12 20;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 12, 0, 0, 4);
+}
+
+.toast-success {
+    -fx-background-color: -fx-success-bg;
+    -fx-text-fill: -fx-success;
+    -fx-border-color: -fx-success;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+.toast-error {
+    -fx-background-color: -fx-error-bg;
+    -fx-text-fill: -fx-error;
+    -fx-border-color: -fx-error;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+/* ============================================================
+   ADMIN EDITOR
+   ============================================================ */
+
+/* Admin page title */
+.admin-page-title {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-fill: -fx-body-text;
+}
+
+/* Save status indicators */
+.admin-save-success {
+    -fx-text-fill: -fx-success;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.admin-save-error {
+    -fx-text-fill: -fx-error;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* ============================================================
+   SHARE / COPY LINK
+   ============================================================ */
+
+.share-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-body-text;
+}
+
+.share-url {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-body-text;
+}
+
+.share-success {
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: bold;
+}
+
+/* ============================================================
+   ICON BUBBLES (for content cards)
+   ============================================================ */
+
+.icon-bubble {
+    -fx-background-radius: 100;
+    -fx-pref-width: 54;
+    -fx-pref-height: 54;
+    -fx-max-width: 54;
+}
+
+.icon-bubble-green {
+    -fx-background-color: #d1fae5;
+}
+
+.icon-bubble-blue {
+    -fx-background-color: #dbeafe;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Post-feedback thank-you title */
+.thank-you-title {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-fill: -fx-primary;
+}
+
+/* Subtitle / description on content pages */
+.hero-subtitle {
+    -fx-font-size: 19px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-text-fill: rgba(255, 255, 255, 0.95);
+}
+
+/* Card title inside content cards */
+.card-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-text-fill: #111827;
+    -fx-padding: 18 0 10 0;
+}
+
+/* Card body text */
+.card-body {
+    -fx-font-size: 15px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-text-fill: -fx-neutral-600;
+    -fx-wrap-text: true;
+}
+
+/* Emoji icon label */
+.emoji-icon {
+    -fx-font-size: 26px;
+    -fx-font-family: "Segoe UI Emoji";
+}

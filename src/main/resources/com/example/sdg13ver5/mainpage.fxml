@@ -5,139 +5,152 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4d4d4" height="720.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="320.0" />
-      <Button fx:id="button1" alignment="BASELINE_LEFT" layoutY="230.0" mnemonicParsing="false" onAction="#pageone" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="      Improve Education">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="button2" alignment="BASELINE_LEFT" layoutY="280.0" mnemonicParsing="false" onAction="#pagetwo" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="      Awarness-Raising">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="button3" alignment="BASELINE_LEFT" layoutY="330.0" mnemonicParsing="false" onAction="#pagethree" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="      Human Impact">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="button4" alignment="BASELINE_LEFT" layoutY="380.0" mnemonicParsing="false" onAction="#pagefour" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="      Adaptation">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Button fx:id="button5" alignment="BASELINE_LEFT" layoutY="430.0" mnemonicParsing="false" onAction="#pagefive" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="      Impact Reduction">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Button layoutY="670.0" mnemonicParsing="false" onAction="#exit" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #a3a6ad;" text="Exit">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font></Button>
-      <Button layoutY="620.0" mnemonicParsing="false" onAction="#tofeedback" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="FeedBack">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Arial Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="button6" alignment="BASELINE_LEFT" layoutY="480.0" mnemonicParsing="false" onAction="#pagesix" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="      Early Warning">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button layoutY="569.0" mnemonicParsing="false" onAction="#sharepage" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: LightGray;" text="Share">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Arial Bold" size="16.0" />
-         </font>
-      </Button>
-      <Button alignment="BASELINE_LEFT" layoutY="180.0" mnemonicParsing="false" onAction="#searchbox" prefHeight="50.0" prefWidth="320.0" style="-fx-background-color: #a3a6ad;" text="     Search" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font></Button>
-      <Pane fx:id="display1" layoutX="320.0" layoutY="179.0" prefHeight="541.0" prefWidth="960.0" style="-fx-background-color: #dbdbdb;" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="190.0" opacity="0.47" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/searchicon.png" />
-         </image></ImageView>
-      <ImageView fitHeight="180.0" fitWidth="655.0" layoutX="650.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/SS-1606190653-SaaS Programme.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="180.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="1280.0">
-         <fill>
-            <LinearGradient endX="0.8815165876777251" endY="0.6682464454976303" startX="0.23222748815165878" startY="0.6635071090047393">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.30980393290519714" green="0.4627451002597809" blue="0.2549019753932953" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.5">
-                     <color>
-                        <Color red="0.311573326587677" green="0.46000000834465027" blue="0.25760000944137573" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.311573326587677" green="0.46000000834465027" blue="0.25760000944137573" opacity="0.37022900581359863" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/Sustainable_Development_Goal_13.png" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="175.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SDG-13">
-         <font>
-            <Font name="Arial Bold" size="100.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="185.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/share_icon.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="198.0" layoutY="633.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/feedback-icon.png" />
-         </image>
-      </ImageView>
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.sdg13ver5.Controller">
+
+   <!-- ===== LEFT NAVIGATION RAIL ===== -->
+   <left>
+      <HBox BorderPane.alignment="TOP_LEFT">
+         <children>
+
+            <!-- PERMANENT HAMBURGER STRIP (always visible, 52px) -->
+            <VBox prefWidth="52.0" style="-fx-background-color: #2e2e2e;">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#toggleNav"
+                          prefHeight="60.0" prefWidth="52.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 22px; -fx-cursor: hand;"
+                          text="≡" />
+               </children>
+            </VBox>
+
+            <!-- COLLAPSIBLE NAV RAIL (fx:id="navRail") -->
+            <VBox fx:id="navRail" prefWidth="185.0" style="-fx-background-color: #3c3c3c;">
+               <children>
+
+                  <!-- Spacer to align with hamburger row height -->
+                  <Region prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #2e2e2e;" />
+
+                  <!-- Search Button -->
+                  <Button fx:id="searchBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#searchbox"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: #4f5057; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="🔍  Search">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <!-- Navigation Buttons -->
+                  <Button fx:id="button1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pageone"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="🌱  Improve education">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button fx:id="button2" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagetwo"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="📢  Awareness-raising">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button fx:id="button3" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagethree"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="👥  Human impact">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button fx:id="button4" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagefour"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="🔄  Adaptation">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button fx:id="button5" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagefive"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="🔰  Impact reduction">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button fx:id="button6" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagesix"
+                          prefHeight="52.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                          text="🔔  Early warning">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <!-- Spacer -->
+                  <Region VBox.vgrow="ALWAYS" />
+
+                  <!-- Bottom Actions -->
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sharepage"
+                          prefHeight="48.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #9ca3af; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
+                          text="🔗  Share">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tofeedback"
+                          prefHeight="48.0" prefWidth="185.0"
+                          style="-fx-background-color: transparent; -fx-text-fill: #9ca3af; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
+                          text="💬  Feedback">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#exit"
+                          prefHeight="48.0" prefWidth="185.0"
+                          style="-fx-background-color: #991b1b; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
+                          text="  ✕  Exit">
+                     <cursor><Cursor fx:constant="HAND" /></cursor>
+                     <padding><Insets left="12.0" /></padding>
+                  </Button>
+
+               </children>
+            </VBox>
+
+         </children>
+      </HBox>
+   </left>
+
+   <!-- ===== MAIN CONTENT AREA ===== -->
+   <center>
+      <AnchorPane fx:id="contentArea" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <!-- Display Pane – pages load here, fills the entire area -->
+            <AnchorPane fx:id="display1" style="-fx-background-color: #F3F4F6;"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+            <!-- Global Logo Overlay -->
+            <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true"
+                       AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="60.0">
+               <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
+            </ImageView>
+
+            <!-- Global Title -->
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="SDG-13"
+                  style="-fx-font-size: 44px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI', Arial; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 6, 0, 0, 2);"
+                  AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="62.0" />
+         </children>
+      </AnchorPane>
+   </center>
+
+</BorderPane>

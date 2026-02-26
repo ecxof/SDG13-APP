@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -8,57 +8,80 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
+<AnchorPane prefHeight="530.0" prefWidth="880.0"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.sdg13ver5.Controller">
    <children>
-      <ImageView fitHeight="459.0" fitWidth="578.0" layoutX="62.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/409-grassy-globe.jpg" />
-         </image>
+
+      <!-- RIGHT: background photo -->
+      <ImageView fitHeight="530.0" fitWidth="570.0" pickOnBounds="true" preserveRatio="false"
+                 mouseTransparent="true"
+                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+         <image><Image url="@image/bg-main.jpg.jpg" /></image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e6f0b6" height="360.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="360.0" layoutX="181.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="0.4597156398104265" startX="0.6303317535545023" startY="0.44075829383886256">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.902400016784668" green="0.9399999976158142" blue="0.7143999934196472" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="26.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/Sustainable_Development_Goal_13.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="username" layoutX="25.0" layoutY="145.0" prefHeight="25.0" prefWidth="180.0" promptText="Username">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></TextField>
-      <Button layoutX="25.0" layoutY="215.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="55.0" text="Login">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button layoutX="90.0" layoutY="215.0" mnemonicParsing="false" onAction="#logtoadmin" prefHeight="25.0" prefWidth="55.0" text="Admin">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Text layoutX="25.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
-      <Label fx:id="invalid_user_pass" layoutX="26.0" layoutY="247.0" textFill="RED" />
-      <PasswordField fx:id="password" layoutX="25.0" layoutY="180.0" prefHeight="25.0" prefWidth="180.0" promptText="Password" />
+      <Rectangle fill="rgba(0,0,0,0.40)" height="530.0" width="570.0" mouseTransparent="true"
+                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
+      <!-- LEFT: dark grey panel -->
+      <VBox prefWidth="310.0" spacing="0.0"
+            style="-fx-background-color: #3c3c3c;"
+            AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+         <padding><Insets top="48.0" right="28.0" bottom="28.0" left="28.0" /></padding>
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+               <children>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
+                  </ImageView>
+                  <Text text="SDG-13"
+                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: #4ade80;" />
+               </children>
+            </HBox>
+
+            <VBox prefHeight="32.0" />
+
+            <Text text="Welcome back"
+                  style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: white;" />
+            <Text text="Please enter your details."
+                  style="-fx-font-size: 14px; -fx-font-family: Arial; -fx-fill: #9ca3af;" />
+
+            <VBox prefHeight="32.0" />
+
+            <Label text="Username"
+                   style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
+            <TextField fx:id="username" promptText="Enter your username"
+                       style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
+                       prefHeight="40.0" />
+
+            <VBox prefHeight="20.0" />
+
+            <Label text="Password"
+                   style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
+            <PasswordField fx:id="password" promptText="Enter your password"
+                           style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
+                           prefHeight="40.0" />
+
+            <VBox prefHeight="8.0" />
+
+            <Label fx:id="invalid_user_pass" textFill="#f87171"
+                   style="-fx-font-size: 12px; -fx-font-family: 'Segoe UI';" />
+
+            <VBox prefHeight="20.0" />
+
+            <Button onAction="#login" text="Sign In" maxWidth="Infinity" prefHeight="44.0"
+                    style="-fx-background-color: #166534; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI'; -fx-background-radius: 8; -fx-cursor: hand;" />
+
+            <VBox prefHeight="16.0" />
+
+            <Button onAction="#logtoadmin" text="Admin Login" maxWidth="Infinity" prefHeight="40.0"
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI'; -fx-border-color: #6b7280; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" />
+         </children>
+      </VBox>
+
    </children>
 </AnchorPane>

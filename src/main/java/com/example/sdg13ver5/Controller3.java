@@ -18,8 +18,7 @@ public class Controller3 {
     private Stage stage;
     private Scene scene;
 
-
-    //Button To switch back to Login Page
+    // Button To switch back to Login Page
     public void admintomain(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("start.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -30,38 +29,41 @@ public class Controller3 {
         stage.show();
     }
 
-    //Button To Switch Between Admin Pages
+    // Button To Switch Between Admin Pages
     @FXML
     public void adminone() throws IOException {
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage1.fxml"));
         display2.getChildren().setAll(viewpage);
     }
+
     @FXML
     public void admintwo() throws IOException {
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage2.fxml"));
         display2.getChildren().setAll(viewpage);
     }
+
     @FXML
     public void adminthree() throws IOException {
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage3.fxml"));
         display2.getChildren().setAll(viewpage);
     }
+
     @FXML
     public void adminfour() throws IOException {
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage4.fxml"));
         display2.getChildren().setAll(viewpage);
     }
+
     @FXML
     public void adminfive() throws IOException {
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage5.fxml"));
         display2.getChildren().setAll(viewpage);
     }
+
     @FXML
     public void adminsix() throws IOException {
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage6.fxml"));
         display2.getChildren().setAll(viewpage);
     }
 
-
 }
-

@@ -1,17 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+﻿<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #dbdbdb;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="624.0" prefWidth="1040.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#275719" height="208.0" layoutY="-88.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="960.0" />
-      <Label fx:id="pageonetitle" layoutX="31.0" layoutY="16.0" text="Impact Reduction " textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="Arial Bold" size="72.0" />
-         </font>
-      </Label>
+      <ImageView fitHeight="624.0" fitWidth="1040.0" pickOnBounds="true" preserveRatio="false" mouseTransparent="true"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+         <image><Image url="@image/bg-main.jpg.jpg" /></image>
+      </ImageView>
+      <Rectangle fill="rgba(0,0,0,0.52)" height="300.0" mouseTransparent="true"
+                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0" />
+      <Rectangle fill="rgba(0,0,0,0.15)" height="384.0" mouseTransparent="true"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <VBox layoutY="160.0" spacing="15.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
+         <children>
+            <Label style="-fx-font-family: 'Arial Bold'; -fx-font-size: 64px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 6, 0, 0, 2);"
+                   text="Impact reduction" textFill="WHITE" wrapText="true" />
+            <Label maxWidth="650.0" style="-fx-font-size: 19px; -fx-font-family: Arial; -fx-line-spacing: 3;"
+                   text="Reducing emissions and environmental harm through mitigation strategies and sustainable practices."
+                   textFill="rgba(255,255,255,0.95)" wrapText="true" />
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutY="260.0" maxHeight="330.0" maxWidth="800.0" prefHeight="330.0" prefWidth="800.0"
+            style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 30, 0, 0, 8);"
+            AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
+         <padding><Insets bottom="32.0" left="48.0" right="48.0" top="32.0" /></padding>
+         <children>
+            <Label style="-fx-font-size: 32px; -fx-padding: 12; -fx-background-color: #dcfce7; -fx-background-radius: 100;" text="🔰" />
+            <Label alignment="CENTER" prefWidth="700.0"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827; -fx-padding: 18 0 10 0;"
+                   text="Impact Reduction" />
+            <Label fx:id="bodyLabel" alignment="CENTER"
+                   style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
+                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </children>
-</Pane>
+</AnchorPane>

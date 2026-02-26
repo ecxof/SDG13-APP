@@ -7,7 +7,6 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,15 +14,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Controller {
+
     private Stage stage;
     private Scene scene;
-    private FXMLLoader fxmlLoader;
 
     @FXML
     TextField username;
@@ -32,7 +30,7 @@ public class Controller {
     @FXML
     Label invalid_user_pass;
 
-    //Login
+    // Login
     @FXML
     public void login(ActionEvent event) throws IOException {
 
@@ -54,22 +52,22 @@ public class Controller {
         }
     }
 
-    //Main page to exit
+    // Main page to exit
     public void exit(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("start.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 640, 360);
+        scene = new Scene(fxmlLoader.load(), 880, 530);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
     }
 
-    //Main page to feedback
+    // Main page to feedback
     public void tofeedback(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("feedbackpage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 640, 540);
+        scene = new Scene(fxmlLoader.load(), 1040, 624);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
@@ -82,7 +80,8 @@ public class Controller {
     TextField feedname;
     @FXML
     Label feed_label;
-    //Feedback page to Thank you page
+
+    // Feedback page to Thank you page
     public void topostfeedback(ActionEvent event) throws IOException {
 
         String varfeedsugg = feedsugg.getText();
@@ -100,7 +99,8 @@ public class Controller {
             stage.show();
         }
     }
-    //feedback page to main page
+
+    // feedback page to main page
     public void feedtomain(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("mainpage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -110,9 +110,6 @@ public class Controller {
         stage.setResizable(false);
         stage.show();
     }
-
-
-
 
     @FXML
     Button button1;
@@ -127,118 +124,127 @@ public class Controller {
     @FXML
     Button button6;
 
-
-
-
-
-    //display Pages
+    // display Pages – AnchorPane so pages fill full height (background images
+    // extend to top)
     @FXML
-    Pane display1;
+    AnchorPane display1;
 
     @FXML
-    public void pageone() throws IOException {
-        Pane viewpage1 = FXMLLoader.load(getClass().getResource("page1.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_One_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        viewpage1.getChildren().add(label);
-        display1.getChildren().setAll(viewpage1);
-    }
+    VBox navRail;
+
     @FXML
-    public void pagetwo() throws IOException {
-        Pane viewpage2 = FXMLLoader.load(getClass().getResource("page2.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Two_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        viewpage2.getChildren().add(label);
-        display1.getChildren().setAll(viewpage2);
+    public void toggleNav() {
+        if (navRail != null) {
+            boolean collapsed = navRail.getPrefWidth() < 50;
+            navRail.setPrefWidth(collapsed ? 190.0 : 0.0);
+            navRail.setMinWidth(collapsed ? 190.0 : 0.0);
+            navRail.setMaxWidth(collapsed ? 190.0 : 0.0);
+        }
     }
 
-    @FXML
-    public void pagethree() throws IOException {
-        Pane viewpage3 = FXMLLoader.load(getClass().getResource("page3.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Three_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        viewpage3.getChildren().add(label);
-        display1.getChildren().setAll(viewpage3);
+    /**
+     * Helper: loads a page FXML, wires up bodyLabel from a text file, stretches it
+     * to fill display1.
+     */
+    private void loadPage(String fxmlFile, String dataFile) {
+        try {
+            java.net.URL fxmlUrl = getClass().getResource(fxmlFile);
+            if (fxmlUrl == null) {
+                showError("FXML not found: " + fxmlFile);
+                return;
+            }
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+            AnchorPane page = loader.load();
+
+            // Populate the bodyLabel from the data file
+            Label bodyLabel = (Label) loader.getNamespace().get("bodyLabel");
+            if (bodyLabel != null) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(dataFile))) {
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        if (sb.length() > 0)
+                            sb.append("\n");
+                        sb.append(line);
+                    }
+                    bodyLabel.setText(sb.toString());
+                } catch (Exception e) {
+                    // Data file missing – page still displays without body text
+                }
+            }
+
+            // Stretch page to fill display1 via AnchorPane constraints
+            AnchorPane.setTopAnchor(page, 0.0);
+            AnchorPane.setBottomAnchor(page, 0.0);
+            AnchorPane.setLeftAnchor(page, 0.0);
+            AnchorPane.setRightAnchor(page, 0.0);
+
+            display1.getChildren().setAll(page);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            String msg = e.getMessage();
+            if (e.getCause() != null)
+                msg += "\nCause: " + e.getCause().getMessage();
+            showError("Error loading " + fxmlFile + ":\n" + msg);
+        }
     }
 
-    @FXML
-    public void pagefour() throws IOException {
-        Pane viewpage4 = FXMLLoader.load(getClass().getResource("page4.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Four_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        viewpage4.getChildren().add(label);
-        display1.getChildren().setAll(viewpage4);
-    }
+    /**
+     * Shows an error message in display1 so failures are visible during
+     * development.
+     */
+    private void showError(String message) {
+        VBox vbox = new VBox(10);
+        vbox.setStyle("-fx-background-color: white; -fx-padding: 40;");
+        Label header = new Label(message);
+        header.setStyle("-fx-text-fill: red; -fx-font-size: 16px; -fx-font-weight: bold;");
+        header.setWrapText(true);
+        display1.getChildren().setAll(vbox);
+        vbox.getChildren().add(header);
 
-    @FXML
-    public void pagefive() throws IOException {
-        Pane viewpage5 = FXMLLoader.load(getClass().getResource("page5.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Five_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        viewpage5.getChildren().add(label);
-        display1.getChildren().setAll(viewpage5);
+        // Add more space for the full path if visible in message
+        AnchorPane.setTopAnchor(vbox, 0.0);
+        AnchorPane.setBottomAnchor(vbox, 0.0);
+        AnchorPane.setLeftAnchor(vbox, 0.0);
+        AnchorPane.setRightAnchor(vbox, 0.0);
     }
 
     @FXML
-    public void pagesix() throws IOException {
-        Pane viewpage6 = FXMLLoader.load(getClass().getResource("page6.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Six_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        viewpage6.getChildren().add(label);
-        display1.getChildren().setAll(viewpage6);
+    public void pageone() {
+        loadPage("page1.fxml", "Page_One_Data.txt");
     }
-    //admin login
+
+    @FXML
+    public void pagetwo() {
+        loadPage("page2.fxml", "Page_Two_Data.txt");
+    }
+
+    @FXML
+    public void pagethree() {
+        loadPage("page3.fxml", "Page_Three_Data.txt");
+    }
+
+    @FXML
+    public void pagefour() {
+        loadPage("page4.fxml", "Page_Four_Data.txt");
+    }
+
+    @FXML
+    public void pagefive() {
+        loadPage("page5.fxml", "Page_Five_Data.txt");
+    }
+
+    @FXML
+    public void pagesix() {
+        loadPage("page6.fxml", "Page_Six_Data.txt");
+    }
+
+    // admin login
     @FXML
     TextField adminpass;
-    //admin login password logic and launch of admin page
+
+    // admin login password logic and launch of admin page
     public void adminlogin(ActionEvent event) throws IOException {
 
         String Varadminpass = adminpass.getText();
@@ -258,29 +264,29 @@ public class Controller {
         }
     }
 
-    //button for loginpage to admin
+    // button for loginpage to admin
     public void logtoadmin(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("adminlogin.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 640, 360);
+        scene = new Scene(fxmlLoader.load(), 880, 530);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
     }
 
-    //button for adminlogin page to mainpage
+    // button for adminlogin page to mainpage
     public void adminlogtomain(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("start.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 640, 360);
+        scene = new Scene(fxmlLoader.load(), 880, 530);
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
     }
 
-    //Open search Page
+    // Open search Page
     public Stage searchbox() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("search.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 400);
@@ -290,10 +296,9 @@ public class Controller {
         return searchboxstage;
     }
 
-
-    //searchbar data
+    // searchbar data
     public void searchvalue(String selectednode) throws IOException {
-        switch (selectednode){
+        switch (selectednode) {
             case "[education and awareness-rising]":
                 page1();
                 break;
@@ -314,120 +319,29 @@ public class Controller {
                 break;
         }
     }
-    public void page1() throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("page1.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_One_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane);
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void page2()throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("page2.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Two_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane);
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void page3()throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("page3.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Three_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane);
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void page4()throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("page4.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Four_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane);
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void page5()throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("page5.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Five_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane);
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void page6()throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("page6.fxml"));
-        BufferedReader reader = new BufferedReader(new FileReader("Page_Six_Data.txt"));
-        String temp = reader.readLine();
-        Label label = new Label(temp);
-        label.setPrefWidth(910);
-        label.setPrefHeight(490);
-        label.setLayoutX(17);
-        label.setLayoutY(135);
-        label.setWrapText(true);
-        label.setFont(Font.font("Arial", FontWeight.BOLD,14));
-        label.setAlignment(Pos.TOP_LEFT);
-        pane.getChildren().add(label);
-        Scene scene = new Scene(pane);
+
+    /** Helper: opens a page in a new popup window (used by search). */
+    private void openPageInWindow(String fxmlFile, String dataFile) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        AnchorPane page = loader.load();
+
+        Label bodyLabel = (Label) loader.getNamespace().get("bodyLabel");
+        if (bodyLabel != null) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(dataFile))) {
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    if (sb.length() > 0)
+                        sb.append("\n");
+                    sb.append(line);
+                }
+                bodyLabel.setText(sb.toString());
+            } catch (IOException e) {
+                // Data file missing – page still displays
+            }
+        }
+
+        Scene scene = new Scene(page, 1040, 624);
         Stage stage = new Stage();
         stage.setResizable(false);
         stage.centerOnScreen();
@@ -435,7 +349,31 @@ public class Controller {
         stage.show();
     }
 
-    public void sharepage()throws IOException{
+    public void page1() throws IOException {
+        openPageInWindow("page1.fxml", "Page_One_Data.txt");
+    }
+
+    public void page2() throws IOException {
+        openPageInWindow("page2.fxml", "Page_Two_Data.txt");
+    }
+
+    public void page3() throws IOException {
+        openPageInWindow("page3.fxml", "Page_Three_Data.txt");
+    }
+
+    public void page4() throws IOException {
+        openPageInWindow("page4.fxml", "Page_Four_Data.txt");
+    }
+
+    public void page5() throws IOException {
+        openPageInWindow("page5.fxml", "Page_Five_Data.txt");
+    }
+
+    public void page6() throws IOException {
+        openPageInWindow("page6.fxml", "Page_Six_Data.txt");
+    }
+
+    public void sharepage() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Copylink.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 100);
         Stage stage = new Stage();
@@ -447,7 +385,7 @@ public class Controller {
     @FXML
     Label successcopied;
 
-    public void copy_to_clip(){
+    public void copy_to_clip() {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         ClipboardContent content = new ClipboardContent();
         content.putString("https://sdgs.un.org/goals/goal13");

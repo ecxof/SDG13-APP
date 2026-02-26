@@ -7,15 +7,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller2">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller2">
    <children>
-      <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
+      <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" fill="#1F2937" styleClass="search-title">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Arial Bold" size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="searchbar2" layoutX="15.0" layoutY="50.0" prefHeight="25.0" prefWidth="410.0" />
-      <ListView fx:id="listview" layoutX="15.0" layoutY="83.0" prefHeight="300.0" prefWidth="470.0" />
-      <Button layoutX="434.0" layoutY="50.0" mnemonicParsing="false" onAction="#search" text="Search" />
+      <TextField fx:id="searchbar2" layoutX="15.0" layoutY="50.0" prefHeight="36.0" prefWidth="398.0" promptText="Search topics..." styleClass="text-field" />
+      <Button layoutX="420.0" layoutY="50.0" mnemonicParsing="false" onAction="#search" text="Search" styleClass="btn-primary" prefHeight="36.0" />
+      <ListView fx:id="listview" layoutX="15.0" layoutY="96.0" prefHeight="288.0" prefWidth="470.0" styleClass="list-view" />
    </children>
 </Pane>

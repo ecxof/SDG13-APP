@@ -1,6 +1,8 @@
 module com.example.sdg13ver5 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires transitive javafx.base;
+    requires transitive javafx.graphics;
 
     requires org.controlsfx.controls;
 

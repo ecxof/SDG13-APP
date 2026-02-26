@@ -1,6 +1,7 @@
 package com.example.sdg13ver5;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -11,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
@@ -23,10 +25,28 @@ public class Controller {
     private Stage stage;
     private Scene scene;
 
+    // Tracks whether the password toggle is showing plain text
+    private boolean passwordShown = false;
+    private boolean adminPasswordShown = false;
+    // Tracks whether nav is collapsed
+    private boolean navCollapsed = false;
+    // Tracks currently active nav button
+    private Button activeNavButton = null;
+
+    // CSS stylesheet path for reuse
+    private String getStylesheet() {
+        return getClass().getResource("styles.css").toExternalForm();
+    }
+
+    // ===== Login fields =====
     @FXML
     TextField username;
     @FXML
-    TextField password;
+    PasswordField password;
+    @FXML
+    TextField passwordVisible;
+    @FXML
+    Button togglePasswordBtn;
     @FXML
     Label invalid_user_pass;
 
@@ -75,9 +95,11 @@ public class Controller {
     }
 
     @FXML
-    TextField feedsugg;
+    TextField adminpassVisible;
     @FXML
-    TextField feedname;
+    Button toggleAdminPasswordBtn;
+
+    // ===== Nav rail =====
     @FXML
     Label feed_label;
 
@@ -198,6 +220,9 @@ public class Controller {
         display1.getChildren().setAll(err);
     }
 
+    // ---------------------------------------------------------------
+    // PASSWORD TOGGLE (Admin Login)
+    // ---------------------------------------------------------------
     @FXML
     public void pageone() {
         loadPage("page1.fxml", "Page_One_Data.txt");
@@ -213,6 +238,9 @@ public class Controller {
         loadPage("page3.fxml", "Page_Three_Data.txt");
     }
 
+    // ---------------------------------------------------------------
+    // LOGIN
+    // ---------------------------------------------------------------
     @FXML
     public void pagefour() {
         loadPage("page4.fxml", "Page_Four_Data.txt");
@@ -235,20 +263,42 @@ public class Controller {
     // admin login password logic and launch of admin page
     public void adminlogin(ActionEvent event) throws IOException {
 
-        String Varadminpass = adminpass.getText();
-        if (Varadminpass.equals("123")) {
+        // Inline validation: highlight empty fields
+        boolean hasError = false;
+        if (Varusername.isEmpty()) {
+            username.getStyleClass().add("field-error");
+            hasError = true;
+        } else {
+            username.getStyleClass().remove("field-error");
+        }
+        if (Varpass.isEmpty()) {
+            password.getStyleClass().add("field-error");
+            passwordVisible.getStyleClass().add("field-error");
+            hasError = true;
+        } else {
+            password.getStyleClass().remove("field-error");
+            passwordVisible.getStyleClass().remove("field-error");
+        }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("adminpage.fxml"));
+        if (hasError) {
+            invalid_user_pass.setText("Please fill in all fields");
+            return;
+        }
+
+        if (Varusername.equals("123") && Varpass.equals("123")) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("mainpage.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load(), 1280, 720);
+            scene.getStylesheets().add(getStylesheet());
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.setResizable(false);
             stage.show();
-
         } else {
-            adminpass.clear();
-            invalid_user_pass.setText("Invalid Username Or Password");
+            username.clear();
+            password.clear();
+            passwordVisible.clear();
+            invalid_user_pass.setText("Invalid username or password");
         }
     }
 
@@ -278,8 +328,10 @@ public class Controller {
     public Stage searchbox() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("search.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 400);
+        scene.getStylesheets().add(getStylesheet());
         Stage searchboxstage = new Stage();
         searchboxstage.setScene(scene);
+        searchboxstage.setTitle("Search");
         searchboxstage.show();
         return searchboxstage;
     }
@@ -364,10 +416,11 @@ public class Controller {
     public void sharepage() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Copylink.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 100);
+        scene.getStylesheets().add(getStylesheet());
         Stage stage = new Stage();
+        stage.setTitle("Share link");
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
@@ -378,6 +431,6 @@ public class Controller {
         ClipboardContent content = new ClipboardContent();
         content.putString("https://sdgs.un.org/goals/goal13");
         clipboard.setContent(content);
-        successcopied.setText("Successfully Copied!!!");
+        successcopied.setText("Successfully copied!");
     }
 }

@@ -1,10 +1,14 @@
-﻿<?import javafx.geometry.Insets?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="624.0" prefWidth="1040.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -30,7 +34,10 @@
             AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
          <padding><Insets bottom="32.0" left="48.0" right="48.0" top="32.0" /></padding>
          <children>
-            <Label style="-fx-font-size: 32px; -fx-padding: 12; -fx-background-color: #dcfce7; -fx-background-radius: 100;" text="🚨" />
+            <StackPane maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" prefHeight="64.0" prefWidth="64.0"
+                       style="-fx-background-color: #dcfce7; -fx-background-radius: 100;">
+               <Text style="-fx-font-size: 32px; -fx-font-family: 'Segoe UI Emoji';" text="&#x1f6a8;" />
+            </StackPane>
             <Label alignment="CENTER" prefWidth="700.0"
                    style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827; -fx-padding: 18 0 10 0;"
                    text="Early Warning" />
@@ -41,3 +48,4 @@
       </VBox>
    </children>
 </AnchorPane>
+

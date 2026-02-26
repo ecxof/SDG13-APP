@@ -183,10 +183,7 @@ public class Controller {
 
         } catch (Exception e) {
             e.printStackTrace();
-            String msg = e.getMessage();
-            if (e.getCause() != null)
-                msg += "\nCause: " + e.getCause().getMessage();
-            showError("Error loading " + fxmlFile + ":\n" + msg);
+            showError("Error loading " + fxmlFile + ": " + e.getMessage());
         }
     }
 
@@ -195,19 +192,10 @@ public class Controller {
      * development.
      */
     private void showError(String message) {
-        VBox vbox = new VBox(10);
-        vbox.setStyle("-fx-background-color: white; -fx-padding: 40;");
-        Label header = new Label(message);
-        header.setStyle("-fx-text-fill: red; -fx-font-size: 16px; -fx-font-weight: bold;");
-        header.setWrapText(true);
-        display1.getChildren().setAll(vbox);
-        vbox.getChildren().add(header);
-
-        // Add more space for the full path if visible in message
-        AnchorPane.setTopAnchor(vbox, 0.0);
-        AnchorPane.setBottomAnchor(vbox, 0.0);
-        AnchorPane.setLeftAnchor(vbox, 0.0);
-        AnchorPane.setRightAnchor(vbox, 0.0);
+        Label err = new Label(message);
+        err.setWrapText(true);
+        err.setStyle("-fx-text-fill: red; -fx-font-size: 14px; -fx-padding: 40; -fx-font-family: Arial;");
+        display1.getChildren().setAll(err);
     }
 
     @FXML

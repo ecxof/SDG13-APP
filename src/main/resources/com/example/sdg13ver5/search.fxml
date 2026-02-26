@@ -3,19 +3,34 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller2">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #1f2937;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller2">
    <children>
-      <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" fill="#1F2937" styleClass="search-title">
-         <font>
-            <Font name="Arial Bold" size="24.0" />
-         </font>
-      </Text>
-      <TextField fx:id="searchbar2" layoutX="15.0" layoutY="50.0" prefHeight="36.0" prefWidth="398.0" promptText="Search topics..." styleClass="text-field" />
-      <Button layoutX="420.0" layoutY="50.0" mnemonicParsing="false" onAction="#search" text="Search" styleClass="btn-primary" prefHeight="36.0" />
-      <ListView fx:id="listview" layoutX="15.0" layoutY="96.0" prefHeight="288.0" prefWidth="470.0" styleClass="list-view" />
+      <VBox spacing="16.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Topics">
+               <font>
+                  <Font name="Segoe UI Bold" size="24.0" />
+               </font>
+            </Text>
+            
+            <HBox spacing="10.0">
+               <children>
+                  <TextField fx:id="searchbar2" HBox.hgrow="ALWAYS" prefHeight="40.0" promptText="What are you looking for?" 
+                             style="-fx-background-color: #374151; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 0 12; -fx-prompt-text-fill: #9ca3af;" />
+                  <Button mnemonicParsing="false" onAction="#search" prefHeight="40.0" prefWidth="80.0" 
+                          style="-fx-background-color: #10b981; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" text="Search" />
+               </children>
+            </HBox>
+            
+            <ListView fx:id="listview" prefHeight="260.0" style="-fx-background-color: #374151; -fx-background-radius: 8; -fx-control-inner-background: #374151; -fx-text-fill: white;" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
    </children>
-</Pane>
+</AnchorPane>

@@ -49,11 +49,16 @@ public class Controller3 {
     private boolean navCollapsed = false;
     private Button activeNavButton = null;
 
+    // CSS stylesheet path for reuse
+    private String getStylesheet() {
+        return Application.class.getResource("styles.css").toExternalForm();
+    }
+
     // Button To switch back to Login Page
     public void admintomain(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("start.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 640, 360);
+        scene = new Scene(fxmlLoader.load(), 880, 530);
         scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -104,4 +109,47 @@ public class Controller3 {
         display2.getChildren().setAll(viewpage);
     }
 
+    @FXML
+    public void toggleAdminNav() {
+        Button[] buttons = { adminpageone, adminpagetwo, adminpagethree, adminpagefour, adminpagefive, adminpagesix };
+        if (navCollapsed) {
+            adminNavRail.setPrefWidth(240);
+            for (int i = 0; i < buttons.length; i++) {
+                if (buttons[i] != null) {
+                    buttons[i].setPrefWidth(240);
+                    buttons[i].setText(ADMIN_FULL[i]);
+                }
+            }
+            if (adminExitBtn != null) {
+                adminExitBtn.setPrefWidth(240);
+                adminExitBtn.setText("\u274C  Exit");
+            }
+            navCollapsed = false;
+        } else {
+            adminNavRail.setPrefWidth(64);
+            for (int i = 0; i < buttons.length; i++) {
+                if (buttons[i] != null) {
+                    buttons[i].setPrefWidth(64);
+                    buttons[i].setText(ADMIN_ICONS[i]);
+                }
+            }
+            if (adminExitBtn != null) {
+                adminExitBtn.setPrefWidth(64);
+                adminExitBtn.setText("\u274C");
+            }
+            navCollapsed = true;
+        }
+    }
+
+    private void setActiveNav(Button btn) {
+        if (activeNavButton != null) {
+            activeNavButton.getStyleClass().remove("nav-button-active");
+        }
+        if (btn != null) {
+            if (!btn.getStyleClass().contains("nav-button-active")) {
+                btn.getStyleClass().add("nav-button-active");
+            }
+            activeNavButton = btn;
+        }
+    }
 }

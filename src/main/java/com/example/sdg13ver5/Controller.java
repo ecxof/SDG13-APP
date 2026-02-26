@@ -1,7 +1,6 @@
 package com.example.sdg13ver5;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -17,10 +16,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Controller {
+
+    private static Controller instance;
+
+    public static Controller getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(Controller ctrl) {
+        instance = ctrl;
+    }
 
     private Stage stage;
     private Scene scene;
@@ -50,17 +59,64 @@ public class Controller {
     @FXML
     Label invalid_user_pass;
 
-    // Login
+    // ===== Admin login fields =====
+    @FXML
+    PasswordField adminpass;
+    @FXML
+    TextField adminpassVisible;
+    @FXML
+    Button toggleAdminPasswordBtn;
+
+    @FXML
+    private Pane navRail;
+    @FXML
+    Button navToggleBtn;
+    @FXML
+    Button searchBtn;
+    @FXML
+    Button shareBtn;
+    @FXML
+    Button feedbackBtn;
+    @FXML
+    Button exitBtn;
+
+    // ===== Nav page buttons =====
+
     @FXML
     public void login(ActionEvent event) throws IOException {
-
         String Varusername = username.getText();
-        String Varpass = password.getText();
-        if (Varusername.equals("123") && Varpass.equals("123")) {
+        String Varpass = getPasswordText();
 
+        boolean hasError = false;
+        if (Varusername.isEmpty()) {
+            username.getStyleClass().add("field-error");
+            hasError = true;
+        } else {
+            username.getStyleClass().remove("field-error");
+        }
+        if (Varpass.isEmpty()) {
+            password.getStyleClass().add("field-error");
+            passwordVisible.getStyleClass().add("field-error");
+            hasError = true;
+        } else {
+            password.getStyleClass().remove("field-error");
+            passwordVisible.getStyleClass().remove("field-error");
+        }
+
+        if (hasError) {
+            invalid_user_pass.setText("Please fill in all fields");
+            return;
+        }
+
+        if (Varusername.equals("123") && Varpass.equals("123")) {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("mainpage.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load(), 1280, 720);
+            scene.getStylesheets().add(getStylesheet());
+
+            // Set shared instance for other controllers (like search)
+            setInstance(fxmlLoader.getController());
+
             stage.setScene(scene);
             stage.centerOnScreen();
             stage.setResizable(false);
@@ -68,7 +124,8 @@ public class Controller {
         } else {
             username.clear();
             password.clear();
-            invalid_user_pass.setText("Invalid Username Or Password");
+            passwordVisible.clear();
+            invalid_user_pass.setText("Invalid username or password");
         }
     }
 
@@ -77,6 +134,7 @@ public class Controller {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("start.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load(), 880, 530);
+        scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
@@ -87,38 +145,146 @@ public class Controller {
     public void tofeedback(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("feedbackpage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 1040, 624);
+        scene = new Scene(fxmlLoader.load(), 880, 530);
+        scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.show();
     }
 
-    @FXML
-    TextField adminpassVisible;
-    @FXML
-    Button toggleAdminPasswordBtn;
-
-    // ===== Nav rail =====
-    @FXML
-    Label feed_label;
-
-    // Feedback page to Thank you page
+    // button for feedback page to postfeedback
     public void topostfeedback(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("postfeedback.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(fxmlLoader.load(), 880, 530);
+        scene.getStylesheets().add(getStylesheet());
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+    }
 
-        String varfeedsugg = feedsugg.getText();
-        String varfeedname = feedname.getText();
-        if (varfeedsugg.isEmpty() || varfeedname.isEmpty()) {
-            feed_label.setText("Please Give a Suggestion");
+    // ---------------------------------------------------------------
+    // PASSWORD TOGGLE
+    // ---------------------------------------------------------------
+    @FXML
+    public void togglePassword() {
+        if (passwordShown) {
+            password.setText(passwordVisible.getText());
+            passwordVisible.setVisible(false);
+            password.setVisible(true);
+            togglePasswordBtn.setText("\u25CE");
+            passwordShown = false;
         } else {
+            passwordVisible.setText(password.getText());
+            password.setVisible(false);
+            passwordVisible.setVisible(true);
+            togglePasswordBtn.setText("\u25CF");
+            passwordShown = true;
+        }
+    }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("postfeedback.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(fxmlLoader.load(), 600, 500);
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.setResizable(false);
-            stage.show();
+    @FXML
+    public void toggleAdminPassword() {
+        if (adminPasswordShown) {
+            adminpass.setText(adminpassVisible.getText());
+            adminpassVisible.setVisible(false);
+            adminpass.setVisible(true);
+            toggleAdminPasswordBtn.setText("\u25CE");
+            adminPasswordShown = false;
+        } else {
+            adminpassVisible.setText(adminpass.getText());
+            adminpass.setVisible(false);
+            adminpassVisible.setVisible(true);
+            toggleAdminPasswordBtn.setText("\u25CF");
+            adminPasswordShown = true;
+        }
+    }
+
+    private String getPasswordText() {
+        return passwordShown ? passwordVisible.getText() : password.getText();
+    }
+
+    private String getAdminPasswordText() {
+        return adminPasswordShown ? adminpassVisible.getText() : adminpass.getText();
+    }
+
+    // ---------------------------------------------------------------
+    // NAV TOGGLE
+    // ---------------------------------------------------------------
+    @FXML
+    public void toggleNav() {
+        Button[] pageButtons = { button1, button2, button3, button4, button5, button6 };
+
+        if (navCollapsed) {
+            navRail.setPrefWidth(240);
+            for (int i = 0; i < pageButtons.length; i++) {
+                if (pageButtons[i] != null) {
+                    pageButtons[i].setPrefWidth(240);
+                    pageButtons[i].setText(NAV_FULL[i]);
+                }
+            }
+            if (searchBtn != null) {
+                searchBtn.setPrefWidth(240);
+                searchBtn.setText("\uD83D\uDD0D  Search");
+            }
+            if (shareBtn != null) {
+                shareBtn.setPrefWidth(240);
+                shareBtn.setText("\uD83D\uDD17  Share");
+            }
+            if (feedbackBtn != null) {
+                feedbackBtn.setPrefWidth(240);
+                feedbackBtn.setText("\uD83D\uDCAC  Feedback");
+            }
+            if (exitBtn != null) {
+                exitBtn.setPrefWidth(240);
+                exitBtn.setText("\u274C  Exit");
+            }
+            navCollapsed = false;
+        } else {
+            navRail.setPrefWidth(64);
+            for (int i = 0; i < pageButtons.length; i++) {
+                if (pageButtons[i] != null) {
+                    pageButtons[i].setPrefWidth(64);
+                    pageButtons[i].setText(NAV_ICONS[i]);
+                }
+            }
+            if (searchBtn != null) {
+                searchBtn.setPrefWidth(64);
+                searchBtn.setText("\uD83D\uDD0D");
+            }
+            if (shareBtn != null) {
+                shareBtn.setPrefWidth(64);
+                shareBtn.setText("\uD83D\uDD17");
+            }
+            if (feedbackBtn != null) {
+                feedbackBtn.setPrefWidth(64);
+                feedbackBtn.setText("\uD83D\uDCAC");
+            }
+            if (exitBtn != null) {
+                exitBtn.setPrefWidth(64);
+                exitBtn.setText("\u274C");
+            }
+            navCollapsed = true;
+        }
+    }
+
+    private static final String[] NAV_ICONS = { "\uD83D\uDCDA", "\uD83D\uDCE2", "\uD83D\uDC65", "\uD83D\uDD04",
+            "\uD83D\uDEE1", "\u26A0" };
+    private static final String[] NAV_FULL = { "\uD83D\uDCDA  Improve education", "\uD83D\uDCE2  Awareness-raising",
+            "\uD83D\uDC65  Human impact", "\uD83D\uDD04  Adaptation", "\uD83D\uDEE1  Impact reduction",
+            "\u26A0  Early warning" };
+
+    private void setActiveNav(Button btn) {
+        if (activeNavButton != null) {
+            activeNavButton.getStyleClass().remove("nav-button-active");
+        }
+        if (btn != null) {
+            if (!btn.getStyleClass().contains("nav-button-active")) {
+                btn.getStyleClass().add("nav-button-active");
+            }
+            activeNavButton = btn;
         }
     }
 
@@ -127,6 +293,7 @@ public class Controller {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("mainpage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(fxmlLoader.load(), 1280, 720);
+        scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
@@ -150,19 +317,6 @@ public class Controller {
     // extend to top)
     @FXML
     AnchorPane display1;
-
-    @FXML
-    VBox navRail;
-
-    @FXML
-    public void toggleNav() {
-        if (navRail != null) {
-            boolean collapsed = navRail.getPrefWidth() < 50;
-            navRail.setPrefWidth(collapsed ? 190.0 : 0.0);
-            navRail.setMinWidth(collapsed ? 190.0 : 0.0);
-            navRail.setMaxWidth(collapsed ? 190.0 : 0.0);
-        }
-    }
 
     /**
      * Helper: loads a page FXML, wires up bodyLabel from a text file, stretches it
@@ -223,70 +377,20 @@ public class Controller {
     // ---------------------------------------------------------------
     // PASSWORD TOGGLE (Admin Login)
     // ---------------------------------------------------------------
-    @FXML
-    public void pageone() {
-        loadPage("page1.fxml", "Page_One_Data.txt");
-    }
-
-    @FXML
-    public void pagetwo() {
-        loadPage("page2.fxml", "Page_Two_Data.txt");
-    }
-
-    @FXML
-    public void pagethree() {
-        loadPage("page3.fxml", "Page_Three_Data.txt");
-    }
-
-    // ---------------------------------------------------------------
-    // LOGIN
-    // ---------------------------------------------------------------
-    @FXML
-    public void pagefour() {
-        loadPage("page4.fxml", "Page_Four_Data.txt");
-    }
-
-    @FXML
-    public void pagefive() {
-        loadPage("page5.fxml", "Page_Five_Data.txt");
-    }
-
-    @FXML
-    public void pagesix() {
-        loadPage("page6.fxml", "Page_Six_Data.txt");
-    }
-
-    // admin login
-    @FXML
-    TextField adminpass;
 
     // admin login password logic and launch of admin page
     public void adminlogin(ActionEvent event) throws IOException {
+        String Varadminpass = getAdminPasswordText();
 
-        // Inline validation: highlight empty fields
-        boolean hasError = false;
-        if (Varusername.isEmpty()) {
-            username.getStyleClass().add("field-error");
-            hasError = true;
-        } else {
-            username.getStyleClass().remove("field-error");
-        }
-        if (Varpass.isEmpty()) {
-            password.getStyleClass().add("field-error");
-            passwordVisible.getStyleClass().add("field-error");
-            hasError = true;
-        } else {
-            password.getStyleClass().remove("field-error");
-            passwordVisible.getStyleClass().remove("field-error");
-        }
-
-        if (hasError) {
-            invalid_user_pass.setText("Please fill in all fields");
+        if (Varadminpass.isEmpty()) {
+            adminpass.getStyleClass().add("field-error");
+            adminpassVisible.getStyleClass().add("field-error");
+            invalid_user_pass.setText("Please enter a password");
             return;
         }
 
-        if (Varusername.equals("123") && Varpass.equals("123")) {
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("mainpage.fxml"));
+        if (Varadminpass.equals("123")) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("adminpage.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(fxmlLoader.load(), 1280, 720);
             scene.getStylesheets().add(getStylesheet());
@@ -295,10 +399,11 @@ public class Controller {
             stage.setResizable(false);
             stage.show();
         } else {
-            username.clear();
-            password.clear();
-            passwordVisible.clear();
-            invalid_user_pass.setText("Invalid username or password");
+            adminpass.clear();
+            adminpassVisible.clear();
+            adminpass.getStyleClass().add("field-error");
+            adminpassVisible.getStyleClass().add("field-error");
+            invalid_user_pass.setText("Invalid password");
         }
     }
 
@@ -340,77 +445,54 @@ public class Controller {
     public void searchvalue(String selectednode) throws IOException {
         switch (selectednode) {
             case "[education and awareness-rising]":
-                page1();
+                pageone();
                 break;
             case "[human and institutional capacity]":
-                page2();
+                pagetwo();
                 break;
             case "[mitigation planning]":
-                page3();
+                pagethree();
                 break;
             case "[adaptation planning]":
-                page4();
+                pagefour();
                 break;
             case "[impact reduction]":
-                page5();
+                pagefive();
                 break;
             case "[early warning]":
-                page6();
+                pagesix();
                 break;
         }
     }
 
-    /** Helper: opens a page in a new popup window (used by search). */
-    private void openPageInWindow(String fxmlFile, String dataFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        AnchorPane page = loader.load();
-
-        Label bodyLabel = (Label) loader.getNamespace().get("bodyLabel");
-        if (bodyLabel != null) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(dataFile))) {
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    if (sb.length() > 0)
-                        sb.append("\n");
-                    sb.append(line);
-                }
-                bodyLabel.setText(sb.toString());
-            } catch (IOException e) {
-                // Data file missing – page still displays
-            }
-        }
-
-        Scene scene = new Scene(page, 1040, 624);
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.setScene(scene);
-        stage.show();
+    public void pageone() {
+        setActiveNav(button1);
+        loadPage("page1.fxml", "Page_One_Data.txt");
     }
 
-    public void page1() throws IOException {
-        openPageInWindow("page1.fxml", "Page_One_Data.txt");
+    public void pagetwo() {
+        setActiveNav(button2);
+        loadPage("page2.fxml", "Page_Two_Data.txt");
     }
 
-    public void page2() throws IOException {
-        openPageInWindow("page2.fxml", "Page_Two_Data.txt");
+    public void pagethree() {
+        setActiveNav(button3);
+        loadPage("page3.fxml", "Page_Three_Data.txt");
     }
 
-    public void page3() throws IOException {
-        openPageInWindow("page3.fxml", "Page_Three_Data.txt");
+    public void pagefour() {
+        setActiveNav(button4);
+        loadPage("page4.fxml", "Page_Four_Data.txt");
     }
 
-    public void page4() throws IOException {
-        openPageInWindow("page4.fxml", "Page_Four_Data.txt");
+    public void pagefive() {
+        setActiveNav(button5);
+        loadPage("page5.fxml", "Page_Five_Data.txt");
     }
 
-    public void page5() throws IOException {
-        openPageInWindow("page5.fxml", "Page_Five_Data.txt");
-    }
-
-    public void page6() throws IOException {
-        openPageInWindow("page6.fxml", "Page_Six_Data.txt");
+    public void pagesix() {
+        setActiveNav(button6);
+        loadPage("page6.fxml", "Page_Six_Data.txt");
     }
 
     public void sharepage() throws IOException {

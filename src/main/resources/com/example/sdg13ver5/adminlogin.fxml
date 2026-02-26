@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="530.0" prefWidth="880.0"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
@@ -53,9 +54,19 @@
 
             <Label text="Admin Password"
                    style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
-            <PasswordField fx:id="adminpass" promptText="Enter admin password"
-                           style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
-                           prefHeight="40.0" />
+            <AnchorPane>
+               <children>
+                  <PasswordField fx:id="adminpass" promptText="Enter admin password"
+                                 style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 40 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
+                                 prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <TextField fx:id="adminpassVisible" promptText="Enter admin password" visible="false"
+                             style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 40 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
+                             prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Button fx:id="toggleAdminPasswordBtn" onAction="#toggleAdminPassword" text="◎"
+                          style="-fx-background-color: transparent; -fx-text-fill: #9ca3af; -fx-cursor: hand; -fx-font-size: 16px;"
+                          AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="4.0" />
+               </children>
+            </AnchorPane>
 
             <VBox prefHeight="8.0" />
 

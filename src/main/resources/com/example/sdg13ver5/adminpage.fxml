@@ -1,47 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller3">
-   <children>
-      <!-- Nav rail -->
-      <Pane fx:id="adminNavRail" prefHeight="720.0" prefWidth="240.0" styleClass="nav-rail">
-         <!-- Hamburger toggle with hover effect -->
-         <Button fx:id="adminNavToggleBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#toggleAdminNav" text="&#x2261;" prefHeight="40.0" prefWidth="44.0" styleClass="btn-toggle">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         
-         <Text layoutX="64.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" fill="#1F2937" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: Arial;" />
-         
-         <!-- Nav buttons -->
-         <Button fx:id="adminpageone" alignment="BASELINE_LEFT" layoutY="60.0" mnemonicParsing="false" onAction="#adminone" prefHeight="44.0" prefWidth="240.0" styleClass="nav-button" text="&#x1F4DA;  Page 1 - Education">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         <Button fx:id="adminpagetwo" alignment="BASELINE_LEFT" layoutY="104.0" mnemonicParsing="false" onAction="#admintwo" prefHeight="44.0" prefWidth="240.0" styleClass="nav-button" text="&#x1F4E2;  Page 2 - Awareness">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         <Button fx:id="adminpagethree" alignment="BASELINE_LEFT" layoutY="148.0" mnemonicParsing="false" onAction="#adminthree" prefHeight="44.0" prefWidth="240.0" styleClass="nav-button" text="&#x1F465;  Page 3 - Human impact">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         <Button fx:id="adminpagefour" alignment="BASELINE_LEFT" layoutY="192.0" mnemonicParsing="false" onAction="#adminfour" prefHeight="44.0" prefWidth="240.0" styleClass="nav-button" text="&#x1F504;  Page 4 - Adaptation">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         <Button fx:id="adminpagefive" alignment="BASELINE_LEFT" layoutY="236.0" mnemonicParsing="false" onAction="#adminfive" prefHeight="44.0" prefWidth="240.0" styleClass="nav-button" text="&#x1F6E1;  Page 5 - Impact reduction">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         <Button fx:id="adminpagesix" alignment="BASELINE_LEFT" layoutY="280.0" mnemonicParsing="false" onAction="#adminsix" prefHeight="44.0" prefWidth="240.0" styleClass="nav-button" text="&#x26A0;  Page 6 - Early warning">
-            <cursor><Cursor fx:constant="HAND" /></cursor>
-         </Button>
-         
-         <!-- Exit button -->
-         <Button fx:id="adminExitBtn" layoutY="670.0" mnemonicParsing="false" onAction="#admintomain" prefHeight="44.0" prefWidth="240.0" styleClass="btn-exit" text="&#x274C;  Exit to main" accessibleText="Exit to login screen" />
-      </Pane>
-      
-      <!-- Content display area -->
-      <Pane fx:id="display2" layoutX="240.0" prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: #F3F4F6;" />
-   </children>
-</Pane>
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.sdg13ver5.Controller3">
+
+    <!-- ===== LEFT NAVIGATION RAIL ===== -->
+    <left>
+       <HBox BorderPane.alignment="TOP_LEFT">
+          <children>
+             <VBox fx:id="adminNavRail" prefWidth="240.0" style="-fx-background-color: #111827;">
+                <children>
+                   <Button fx:id="adminNavToggleBtn" mnemonicParsing="false" onAction="#toggleAdminNav"
+                           prefHeight="52.0" prefWidth="240.0"
+                           style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 22px; -fx-cursor: hand;"
+                           text="≡" />
+
+                   <Button fx:id="adminpageone" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#adminone"
+                           prefHeight="52.0" prefWidth="240.0" styleClass="nav-button"
+                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                           text="🌱  Page 1 - Improve Education">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+
+                   <Button fx:id="adminpagetwo" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#admintwo"
+                           prefHeight="52.0" prefWidth="240.0" styleClass="nav-button"
+                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                           text="📢  Page 2 - Awareness-Raising">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+
+                   <Button fx:id="adminpagethree" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#adminthree"
+                           prefHeight="52.0" prefWidth="240.0" styleClass="nav-button"
+                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                           text="👥  Page 3 - Human Impact">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+
+                   <Button fx:id="adminpagefour" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#adminfour"
+                           prefHeight="52.0" prefWidth="240.0" styleClass="nav-button"
+                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                           text="🔄  Page 4 - Adaptation">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+
+                   <Button fx:id="adminpagefive" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#adminfive"
+                           prefHeight="52.0" prefWidth="240.0" styleClass="nav-button"
+                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                           text="🔰  Page 5 - Impact Reduction">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+
+                   <Button fx:id="adminpagesix" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#adminsix"
+                           prefHeight="52.0" prefWidth="240.0" styleClass="nav-button"
+                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
+                           text="🔔  Page 6 - Early Warning">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+
+                   <Region VBox.vgrow="ALWAYS" />
+
+                   <Button fx:id="adminExitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#admintomain"
+                           prefHeight="48.0" prefWidth="240.0" styleClass="btn-exit"
+                           style="-fx-background-color: #991b1b; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
+                           text="  ✕  Exit To Main">
+                      <cursor><Cursor fx:constant="HAND" /></cursor>
+                      <padding><Insets left="12.0" /></padding>
+                   </Button>
+                </children>
+             </VBox>
+          </children>
+       </HBox>
+    </left>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <center>
+       <AnchorPane BorderPane.alignment="TOP_LEFT">
+          <children>
+             <!-- Display Area with Leafy Background -->
+             <AnchorPane fx:id="display2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                   <ImageView fitHeight="720.0" fitWidth="1040.0" pickOnBounds="true" preserveRatio="false"
+                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <image><Image url="@image/bg-admin.jpg" /></image>
+                   </ImageView>
+                   <Rectangle fill="rgba(31,41,55,0.85)" height="720.0" width="1040.0"
+                                                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                </children>
+             </AnchorPane>
+
+             <!-- Header Bar -->
+             <AnchorPane prefHeight="70.0" style="-fx-background-color: #111827;"
+                         AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                   <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true"
+                              AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="13.0">
+                      <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
+                   </ImageView>
+                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SDG-13 | Admin"
+                         style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI', Arial;"
+                         AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="22.0" />
+                </children>
+             </AnchorPane>
+          </children>
+       </AnchorPane>
+    </center>
+
+</BorderPane>

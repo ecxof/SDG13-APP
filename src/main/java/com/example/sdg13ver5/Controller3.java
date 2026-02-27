@@ -3,6 +3,8 @@ package com.example.sdg13ver5;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,84 +35,26 @@ public class Controller3 {
     @FXML
     Button adminExitBtn;
 
-    private static final String[] ADMIN_ICONS = { "\uD83D\uDCDA", "\uD83D\uDCE2", "\uD83D\uDC65", "\uD83D\uDD04",
-            "\uD83D\uDEE1", "\u26A0" };
-    private static final String[] ADMIN_FULL = {
-            "\uD83D\uDCDA  Page 1 - Education",
-            "\uD83D\uDCE2  Page 2 - Awareness",
-            "\uD83D\uDC65  Page 3 - Human impact",
-            "\uD83D\uDD04  Page 4 - Adaptation",
-            "\uD83D\uDEE1  Page 5 - Impact reduction",
-            "\u26A0  Page 6 - Early warning"
-    };
+    private static final String[] ADMIN_ICONS = { "🌱", "📢", "👥", "🔄", "🔰", "🔔" };
+    private static final String[] ADMIN_FULL = { "🌱  Page 1 - Improve Education", "📢  Page 2 - Awareness-Raising",
+            "👥  Page 3 - Human Impact",
+            "🔄  Page 4 - Adaptation", "🔰  Page 5 - Impact Reduction", "🔔  Page 6 - Early Warning" };
 
     private Stage stage;
     private Scene scene;
     private boolean navCollapsed = false;
     private Button activeNavButton = null;
 
+    // CSS stylesheet path for reuse
     private String getStylesheet() {
-        return getClass().getResource("styles.css").toExternalForm();
+        return Application.class.getResource("styles.css").toExternalForm();
     }
 
-    @FXML
-    public void toggleAdminNav() {
-        Button[] btns = { adminpageone, adminpagetwo, adminpagethree, adminpagefour, adminpagefive, adminpagesix };
-        if (navCollapsed) {
-            adminNavRail.setPrefWidth(240);
-            for (int i = 0; i < btns.length; i++) {
-                if (btns[i] != null) {
-                    btns[i].setPrefWidth(240);
-                    btns[i].setText(ADMIN_FULL[i]);
-                }
-            }
-            if (adminExitBtn != null) {
-                adminExitBtn.setPrefWidth(240);
-                adminExitBtn.setText("\u274C  Exit to main");
-            }
-            if (display2 != null) {
-                display2.setLayoutX(240);
-                display2.setPrefWidth(1040);
-            }
-            navCollapsed = false;
-        } else {
-            adminNavRail.setPrefWidth(64);
-            for (int i = 0; i < btns.length; i++) {
-                if (btns[i] != null) {
-                    btns[i].setPrefWidth(64);
-                    btns[i].setText(ADMIN_ICONS[i]);
-                }
-            }
-            if (adminExitBtn != null) {
-                adminExitBtn.setPrefWidth(64);
-                adminExitBtn.setText("\u274C");
-            }
-            if (display2 != null) {
-                display2.setLayoutX(64);
-                display2.setPrefWidth(1216);
-            }
-            navCollapsed = true;
-        }
-    }
-
-    // Active nav state
-    private void setActiveNav(Button btn) {
-        if (activeNavButton != null) {
-            activeNavButton.getStyleClass().remove("nav-button-active");
-        }
-        if (btn != null) {
-            if (!btn.getStyleClass().contains("nav-button-active")) {
-                btn.getStyleClass().add("nav-button-active");
-            }
-            activeNavButton = btn;
-        }
-    }
-
-    // Button to switch back to Login Page
+    // Button To switch back to Login Page
     public void admintomain(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("start.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 640, 360);
+        scene = new Scene(fxmlLoader.load(), 880, 530);
         scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -118,7 +62,7 @@ public class Controller3 {
         stage.show();
     }
 
-    // Button to switch between admin pages
+    // Button To Switch Between Admin Pages
     @FXML
     public void adminone() throws IOException {
         setActiveNav(adminpageone);
@@ -159,5 +103,74 @@ public class Controller3 {
         setActiveNav(adminpagesix);
         Pane viewpage = FXMLLoader.load(getClass().getResource("adminpage6.fxml"));
         display2.getChildren().setAll(viewpage);
+    }
+
+    @FXML
+    public void toggleAdminNav() {
+        Button[] buttons = { adminpageone, adminpagetwo, adminpagethree, adminpagefour, adminpagefive, adminpagesix };
+
+        if (navCollapsed) {
+            adminNavRail.setPrefWidth(240);
+            if (adminNavToggleBtn != null) {
+                adminNavToggleBtn.setPrefWidth(240);
+                adminNavToggleBtn.setPrefHeight(52);
+                adminNavToggleBtn.setAlignment(Pos.CENTER_LEFT);
+                adminNavToggleBtn.setPadding(new Insets(0, 0, 0, 12));
+            }
+            for (int i = 0; i < buttons.length; i++) {
+                if (buttons[i] != null) {
+                    buttons[i].setPrefWidth(240);
+                    buttons[i].setPrefHeight(44);
+                    buttons[i].setText(ADMIN_FULL[i]);
+                    buttons[i].setAlignment(Pos.BASELINE_LEFT);
+                    buttons[i].setPadding(new Insets(0, 0, 0, 12));
+                }
+            }
+            if (adminExitBtn != null) {
+                adminExitBtn.setPrefWidth(240);
+                adminExitBtn.setPrefHeight(44);
+                adminExitBtn.setText("❌  Exit To Main");
+                adminExitBtn.setAlignment(Pos.BASELINE_LEFT);
+                adminExitBtn.setPadding(new Insets(0, 0, 0, 12));
+            }
+            navCollapsed = false;
+        } else {
+            adminNavRail.setPrefWidth(64);
+            if (adminNavToggleBtn != null) {
+                adminNavToggleBtn.setPrefWidth(64);
+                adminNavToggleBtn.setPrefHeight(52);
+                adminNavToggleBtn.setAlignment(Pos.CENTER);
+                adminNavToggleBtn.setPadding(Insets.EMPTY);
+            }
+            for (int i = 0; i < buttons.length; i++) {
+                if (buttons[i] != null) {
+                    buttons[i].setPrefWidth(64);
+                    buttons[i].setPrefHeight(44);
+                    buttons[i].setText(ADMIN_ICONS[i]);
+                    buttons[i].setAlignment(Pos.CENTER);
+                    buttons[i].setPadding(Insets.EMPTY);
+                }
+            }
+            if (adminExitBtn != null) {
+                adminExitBtn.setPrefWidth(64);
+                adminExitBtn.setPrefHeight(44);
+                adminExitBtn.setText("❌");
+                adminExitBtn.setAlignment(Pos.CENTER);
+                adminExitBtn.setPadding(Insets.EMPTY);
+            }
+            navCollapsed = true;
+        }
+    }
+
+    private void setActiveNav(Button btn) {
+        if (activeNavButton != null) {
+            activeNavButton.getStyleClass().remove("nav-button-active");
+        }
+        if (btn != null) {
+            if (!btn.getStyleClass().contains("nav-button-active")) {
+                btn.getStyleClass().add("nav-button-active");
+            }
+            activeNavButton = btn;
+        }
     }
 }

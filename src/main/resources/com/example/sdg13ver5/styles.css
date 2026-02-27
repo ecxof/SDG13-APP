@@ -1,0 +1,118 @@
+/* 
+   SDG-13 Premium Dark Theme 
+   Modern, sleek, and high-contrast for visibility.
+*/
+
+.root {
+    -fx-base: #1f2937;
+    -fx-background: #1f2937;
+    -fx-control-inner-background: #374151;
+}
+
+/* Base text styling */
+.label {
+    -fx-text-fill: #e5e7eb;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 14px;
+}
+
+.text {
+    -fx-fill: #f3f4f6;
+    -fx-font-family: "Segoe UI", Arial;
+}
+
+/* Buttons */
+.button {
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-transition: 0.2s;
+}
+
+.button:hover {
+    -fx-opacity: 0.85;
+}
+
+.btn-primary {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.btn-danger {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+}
+
+.btn-outline {
+    -fx-background-color: transparent;
+    -fx-border-color: #6b7280;
+    -fx-border-radius: 8;
+    -fx-text-fill: white;
+}
+
+/* Text Fields */
+.text-field,
+.password-field {
+    -fx-background-color: #374151;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #4b5563;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #9ca3af;
+}
+
+.text-field:focused,
+.password-field:focused {
+    -fx-border-color: #10b981;
+}
+
+.field-error {
+    -fx-border-color: #ef4444 !important;
+}
+
+/* Navigation Rail (Sidebar) */
+.nav-rail {
+    -fx-background-color: #111827;
+}
+
+.btn-toggle {
+    -fx-background-color: transparent;
+    -fx-text-fill: #10b981;
+    -fx-font-size: 24px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d1d5db;
+}
+
+.nav-button:hover {
+    -fx-background-color: #4b5563;
+    -fx-effect: dropshadow(gaussian, #10b981, 15, 0, 0, 0);
+}
+
+.nav-button-active {
+    -fx-background-color: #10b981;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #10b981, 20, 0.2, 0, 0);
+}
+
+/* Cards & Containers */
+.card {
+    -fx-background-color: #374151;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
+}
+
+/* ScrollBars */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #4b5563;
+    -fx-background-radius: 4;
+}

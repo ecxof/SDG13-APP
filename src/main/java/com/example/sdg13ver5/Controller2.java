@@ -30,8 +30,6 @@ public class Controller2 implements Initializable {
     @FXML
     Scene scene;
 
-    Controller controller = new Controller();
-
     @FXML
     private TextField searchbar2;
 
@@ -55,7 +53,10 @@ public class Controller2 implements Initializable {
                 if (click.getClickCount() == 2) {
                     String selectednode = String.valueOf(listview.getSelectionModel().getSelectedItems());
                     try {
-                        controller.searchvalue(selectednode);
+                        Controller mainCtrl = Controller.getInstance();
+                        if (mainCtrl != null) {
+                            mainCtrl.searchvalue(selectednode);
+                        }
                     } catch (IOException exception) {
                         exception.printStackTrace();
                     }

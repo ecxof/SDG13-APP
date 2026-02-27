@@ -4,20 +4,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller4">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1040.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller4">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Page 6 — Early warning" fill="#1F2937" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="24.0">
-         <font>
-            <Font name="Arial Bold" size="40.0" />
-         </font>
-      </Text>
-      <Label text="Change info (max 300 characters)" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #1F2937;" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="68.0" />
-      <TextArea fx:id="Info6" prefHeight="540.0" styleClass="text-area" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="92.0" />
-      <Label fx:id="charCounter6" text="0 / 300" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="640.0" />
-      <Label fx:id="saveStatus6" text="" style="-fx-font-size: 13px;" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="683.0" />
+      <HBox alignment="CENTER_LEFT" spacing="30.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="90.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Page 6 — Early Warning" fill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <Label text="Change info (max 300 characters)" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: white;" />
+         </children>
+      </HBox>
+      <TextArea fx:id="Info6" prefHeight="540.0" styleClass="text-area" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="122.0" />
+      <Label fx:id="charCounter6" text="0 / 300" style="-fx-font-size: 13px; -fx-text-fill: #e5e7eb;" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="670.0" />
+      <Label fx:id="saveStatus6" text="" style="-fx-font-size: 13px; -fx-text-fill: #10b981;" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="683.0" />
       <Button mnemonicParsing="false" onAction="#page_6" text="Save" styleClass="btn-primary" prefHeight="32.0" prefWidth="80.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="678.0" />
    </children>
 </AnchorPane>

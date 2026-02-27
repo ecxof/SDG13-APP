@@ -8,43 +8,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="540.0" prefWidth="640.0"
-            style="-fx-background-color: #3c3c3c;"
+<AnchorPane prefHeight="720.0" prefWidth="1280.0"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.sdg13ver5.Controller">
    <children>
+      <!-- Background Gradient -->
+      <javafx.scene.shape.Rectangle height="720.0" width="1280.0" mouseTransparent="true"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <fill>
+            <javafx.scene.paint.LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <javafx.scene.paint.Stop color="#111827">
+                     <offset>0.0</offset>
+                  </javafx.scene.paint.Stop>
+                  <javafx.scene.paint.Stop color="#1f2937">
+                     <offset>1.0</offset>
+                  </javafx.scene.paint.Stop>
+               </stops>
+            </javafx.scene.paint.LinearGradient>
+         </fill>
+      </javafx.scene.shape.Rectangle>
       <!-- Header Section -->
-      <VBox spacing="4.0" AnchorPane.topAnchor="40.0" AnchorPane.leftAnchor="40.0">
+      <VBox spacing="15.0" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
          <children>
-            <Text text="💬 Feedback"
-                  style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: white;" />
-            <Text text="We'd love to hear your thoughts about SDG-13."
-                  style="-fx-font-size: 14px; -fx-font-family: Arial; -fx-fill: #9ca3af;" />
+            <Label style="-fx-font-family: 'Arial Bold'; -fx-font-size: 64px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 1);"
+                   text="Feedback" textFill="WHITE" wrapText="true" />
+            <Label maxWidth="650.0" style="-fx-font-size: 19px; -fx-font-family: Arial; -fx-line-spacing: 3;"
+                   text="We'd love to hear your thoughts about SDG-13. Help us shape a more sustainable future."
+                   textFill="rgba(255,255,255,0.9)" wrapText="true" />
          </children>
       </VBox>
 
       <!-- Feedback Card -->
-      <VBox spacing="16.0"
-            style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 6);"
-            AnchorPane.topAnchor="120.0" AnchorPane.bottomAnchor="32.0"
-            AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
-         <padding><Insets top="32.0" right="32.0" bottom="32.0" left="32.0" /></padding>
+      <VBox spacing="24.0"
+            style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 30, 0, 0, 8);"
+            AnchorPane.topAnchor="240.0" AnchorPane.bottomAnchor="60.0"
+            AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
+         <padding><Insets top="40.0" right="48.0" bottom="40.0" left="48.0" /></padding>
          <children>
-            <VBox spacing="8.0">
+            <VBox spacing="12.0">
                <children>
                   <Label text="Your Name"
-                         style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
+                         style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
                   <TextField fx:id="feedname" promptText="e.g. John Smith"
-                             style="-fx-background-color: #f9fafb; -fx-border-color: #e5e7eb; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10 12;" />
+                             style="-fx-background-color: #f9fafb; -fx-border-color: #e5e7eb; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px;" />
                </children>
             </VBox>
 
-            <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+            <VBox spacing="12.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label text="Your Suggestion"
-                         style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
-                  <TextField fx:id="feedsugg" alignment="TOP_LEFT" prefHeight="200.0" promptText="What can we improve?"
-                             style="-fx-background-color: #f9fafb; -fx-border-color: #e5e7eb; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 12;" />
+                         style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
+                  <TextField fx:id="feedsugg" alignment="TOP_LEFT" prefHeight="180.0" promptText="What can we improve?"
+                             style="-fx-background-color: #f9fafb; -fx-border-color: #e5e7eb; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 16; -fx-font-size: 14px;" />
                </children>
             </VBox>
 

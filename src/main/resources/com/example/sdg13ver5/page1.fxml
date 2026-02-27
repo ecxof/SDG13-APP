@@ -3,13 +3,15 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="624.0" prefWidth="1040.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="624.0" fitWidth="1040.0" pickOnBounds="true" preserveRatio="false" mouseTransparent="true"
-                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+      <ImageView fitHeight="650.0" fitWidth="1220.0" pickOnBounds="true" preserveRatio="false" mouseTransparent="true"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
          <image><Image url="@image/bg-main.jpg.jpg" /></image>
       </ImageView>
       <Rectangle fill="rgba(0,0,0,0.52)" height="300.0" mouseTransparent="true"
@@ -18,8 +20,8 @@
                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <VBox layoutY="160.0" spacing="15.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
          <children>
-            <Label style="-fx-font-family: 'Arial Bold'; -fx-font-size: 64px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 6, 0, 0, 2);"
-                   text="Improve Education" textFill="WHITE" wrapText="true" />
+            <Label style="-fx-font-family: 'Arial Bold'; -fx-font-size: 64px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 1);"
+                   text="Improve Education" textFill="#1F2937" wrapText="true" />
             <Label maxWidth="650.0" style="-fx-font-size: 19px; -fx-font-family: Arial; -fx-line-spacing: 3;"
                    text="Empowering the next generation with Climate Change Education (CCE) to build a resilient and sustainable future."
                    textFill="rgba(255,255,255,0.95)" wrapText="true" />
@@ -30,7 +32,10 @@
             AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
          <padding><Insets bottom="32.0" left="48.0" right="48.0" top="32.0" /></padding>
          <children>
-            <Label style="-fx-font-size: 32px; -fx-padding: 12; -fx-background-color: #dcfce7; -fx-background-radius: 100;" text="🎓" />
+            <StackPane maxHeight="64.0" maxWidth="64.0" minHeight="64.0" minWidth="64.0" prefHeight="64.0" prefWidth="64.0"
+                       style="-fx-background-color: #dcfce7; -fx-background-radius: 100;">
+               <Text style="-fx-font-size: 32px; -fx-font-family: 'Segoe UI Emoji';" text="&#x1f393;" />
+            </StackPane>
             <Label alignment="CENTER" prefWidth="700.0"
                    style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827; -fx-padding: 18 0 10 0;"
                    text="Comprehensive Climate Education" />

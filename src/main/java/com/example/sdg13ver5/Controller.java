@@ -7,6 +7,8 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -49,15 +51,15 @@ public class Controller {
 
     // ===== Login fields =====
     @FXML
-    TextField username;
+    TextField Username;
     @FXML
-    PasswordField password;
+    PasswordField Password;
     @FXML
-    TextField passwordVisible;
+    TextField PasswordVisible;
     @FXML
     Button togglePasswordBtn;
     @FXML
-    Label invalid_user_pass;
+    Label Invalid_User_Pass;
 
     // ===== Admin login fields =====
     @FXML
@@ -84,27 +86,27 @@ public class Controller {
 
     @FXML
     public void login(ActionEvent event) throws IOException {
-        String Varusername = username.getText();
+        String Varusername = Username.getText();
         String Varpass = getPasswordText();
 
         boolean hasError = false;
         if (Varusername.isEmpty()) {
-            username.getStyleClass().add("field-error");
+            Username.getStyleClass().add("field-error");
             hasError = true;
         } else {
-            username.getStyleClass().remove("field-error");
+            Username.getStyleClass().remove("field-error");
         }
         if (Varpass.isEmpty()) {
-            password.getStyleClass().add("field-error");
-            passwordVisible.getStyleClass().add("field-error");
+            Password.getStyleClass().add("field-error");
+            PasswordVisible.getStyleClass().add("field-error");
             hasError = true;
         } else {
-            password.getStyleClass().remove("field-error");
-            passwordVisible.getStyleClass().remove("field-error");
+            Password.getStyleClass().remove("field-error");
+            PasswordVisible.getStyleClass().remove("field-error");
         }
 
         if (hasError) {
-            invalid_user_pass.setText("Please fill in all fields");
+            Invalid_User_Pass.setText("Please fill in all fields");
             return;
         }
 
@@ -122,10 +124,10 @@ public class Controller {
             stage.setResizable(false);
             stage.show();
         } else {
-            username.clear();
-            password.clear();
-            passwordVisible.clear();
-            invalid_user_pass.setText("Invalid username or password");
+            Username.clear();
+            Password.clear();
+            PasswordVisible.clear();
+            Invalid_User_Pass.setText("Invalid username or password");
         }
     }
 
@@ -145,7 +147,7 @@ public class Controller {
     public void tofeedback(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("feedbackpage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 880, 530);
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -157,7 +159,7 @@ public class Controller {
     public void topostfeedback(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("postfeedback.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(fxmlLoader.load(), 880, 530);
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.getStylesheets().add(getStylesheet());
         stage.setScene(scene);
         stage.centerOnScreen();
@@ -171,15 +173,15 @@ public class Controller {
     @FXML
     public void togglePassword() {
         if (passwordShown) {
-            password.setText(passwordVisible.getText());
-            passwordVisible.setVisible(false);
-            password.setVisible(true);
+            Password.setText(PasswordVisible.getText());
+            PasswordVisible.setVisible(false);
+            Password.setVisible(true);
             togglePasswordBtn.setText("\u25CE");
             passwordShown = false;
         } else {
-            passwordVisible.setText(password.getText());
-            password.setVisible(false);
-            passwordVisible.setVisible(true);
+            PasswordVisible.setText(Password.getText());
+            Password.setVisible(false);
+            PasswordVisible.setVisible(true);
             togglePasswordBtn.setText("\u25CF");
             passwordShown = true;
         }
@@ -203,7 +205,7 @@ public class Controller {
     }
 
     private String getPasswordText() {
-        return passwordShown ? passwordVisible.getText() : password.getText();
+        return passwordShown ? PasswordVisible.getText() : Password.getText();
     }
 
     private String getAdminPasswordText() {
@@ -219,62 +221,102 @@ public class Controller {
 
         if (navCollapsed) {
             navRail.setPrefWidth(240);
+            if (navToggleBtn != null) {
+                navToggleBtn.setPrefWidth(240);
+                navToggleBtn.setPrefHeight(52);
+                navToggleBtn.setAlignment(Pos.CENTER_LEFT);
+                navToggleBtn.setPadding(new Insets(0, 0, 0, 12));
+            }
             for (int i = 0; i < pageButtons.length; i++) {
                 if (pageButtons[i] != null) {
                     pageButtons[i].setPrefWidth(240);
+                    pageButtons[i].setPrefHeight(52);
                     pageButtons[i].setText(NAV_FULL[i]);
+                    pageButtons[i].setAlignment(Pos.BASELINE_LEFT);
+                    pageButtons[i].setPadding(new Insets(0, 0, 0, 12));
                 }
             }
             if (searchBtn != null) {
                 searchBtn.setPrefWidth(240);
+                searchBtn.setPrefHeight(52);
                 searchBtn.setText("\uD83D\uDD0D  Search");
+                searchBtn.setAlignment(Pos.BASELINE_LEFT);
+                searchBtn.setPadding(new Insets(0, 0, 0, 12));
             }
             if (shareBtn != null) {
                 shareBtn.setPrefWidth(240);
+                shareBtn.setPrefHeight(52);
                 shareBtn.setText("\uD83D\uDD17  Share");
+                shareBtn.setAlignment(Pos.BASELINE_LEFT);
+                shareBtn.setPadding(new Insets(0, 0, 0, 12));
             }
             if (feedbackBtn != null) {
                 feedbackBtn.setPrefWidth(240);
+                feedbackBtn.setPrefHeight(52);
                 feedbackBtn.setText("\uD83D\uDCAC  Feedback");
+                feedbackBtn.setAlignment(Pos.BASELINE_LEFT);
+                feedbackBtn.setPadding(new Insets(0, 0, 0, 12));
             }
             if (exitBtn != null) {
                 exitBtn.setPrefWidth(240);
+                exitBtn.setPrefHeight(52);
                 exitBtn.setText("\u274C  Exit");
+                exitBtn.setAlignment(Pos.BASELINE_LEFT);
+                exitBtn.setPadding(new Insets(0, 0, 0, 12));
             }
             navCollapsed = false;
         } else {
             navRail.setPrefWidth(64);
+            if (navToggleBtn != null) {
+                navToggleBtn.setPrefWidth(64);
+                navToggleBtn.setPrefHeight(52);
+                navToggleBtn.setAlignment(Pos.CENTER);
+                navToggleBtn.setPadding(Insets.EMPTY);
+            }
             for (int i = 0; i < pageButtons.length; i++) {
                 if (pageButtons[i] != null) {
                     pageButtons[i].setPrefWidth(64);
+                    pageButtons[i].setPrefHeight(52);
                     pageButtons[i].setText(NAV_ICONS[i]);
+                    pageButtons[i].setAlignment(Pos.CENTER);
+                    pageButtons[i].setPadding(Insets.EMPTY);
                 }
             }
             if (searchBtn != null) {
                 searchBtn.setPrefWidth(64);
+                searchBtn.setPrefHeight(52);
                 searchBtn.setText("\uD83D\uDD0D");
+                searchBtn.setAlignment(Pos.CENTER);
+                searchBtn.setPadding(Insets.EMPTY);
             }
             if (shareBtn != null) {
                 shareBtn.setPrefWidth(64);
+                shareBtn.setPrefHeight(52);
                 shareBtn.setText("\uD83D\uDD17");
+                shareBtn.setAlignment(Pos.CENTER);
+                shareBtn.setPadding(Insets.EMPTY);
             }
             if (feedbackBtn != null) {
                 feedbackBtn.setPrefWidth(64);
+                feedbackBtn.setPrefHeight(52);
                 feedbackBtn.setText("\uD83D\uDCAC");
+                feedbackBtn.setAlignment(Pos.CENTER);
+                feedbackBtn.setPadding(Insets.EMPTY);
             }
             if (exitBtn != null) {
                 exitBtn.setPrefWidth(64);
+                exitBtn.setPrefHeight(52);
                 exitBtn.setText("\u274C");
+                exitBtn.setAlignment(Pos.CENTER);
+                exitBtn.setPadding(Insets.EMPTY);
             }
             navCollapsed = true;
         }
     }
 
-    private static final String[] NAV_ICONS = { "\uD83D\uDCDA", "\uD83D\uDCE2", "\uD83D\uDC65", "\uD83D\uDD04",
-            "\uD83D\uDEE1", "\u26A0" };
-    private static final String[] NAV_FULL = { "\uD83D\uDCDA  Improve education", "\uD83D\uDCE2  Awareness-raising",
-            "\uD83D\uDC65  Human impact", "\uD83D\uDD04  Adaptation", "\uD83D\uDEE1  Impact reduction",
-            "\u26A0  Early warning" };
+    private static final String[] NAV_ICONS = { "🌱", "📢", "👥", "🔄", "🔰", "🔔" };
+    private static final String[] NAV_FULL = { "🌱  Improve Education", "📢  Awareness-Raising", "👥  Human Impact",
+            "🔄  Adaptation", "🔰  Impact Reduction", "🔔  Early Warning" };
 
     private void setActiveNav(Button btn) {
         if (activeNavButton != null) {
@@ -385,7 +427,7 @@ public class Controller {
         if (Varadminpass.isEmpty()) {
             adminpass.getStyleClass().add("field-error");
             adminpassVisible.getStyleClass().add("field-error");
-            invalid_user_pass.setText("Please enter a password");
+            Invalid_User_Pass.setText("Please enter a password");
             return;
         }
 
@@ -403,7 +445,7 @@ public class Controller {
             adminpassVisible.clear();
             adminpass.getStyleClass().add("field-error");
             adminpassVisible.getStyleClass().add("field-error");
-            invalid_user_pass.setText("Invalid password");
+            Invalid_User_Pass.setText("Invalid password");
         }
     }
 

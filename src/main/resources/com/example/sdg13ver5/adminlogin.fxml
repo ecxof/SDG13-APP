@@ -35,11 +35,11 @@
          <children>
             <HBox alignment="CENTER_LEFT" spacing="12.0">
                <children>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                      <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
                   </ImageView>
                   <Text text="SDG-13"
-                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: #4ade80;" />
+                        style="-fx-font-size: 50px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: #4ade80;" />
                </children>
             </HBox>
 
@@ -70,7 +70,7 @@
 
             <VBox prefHeight="8.0" />
 
-            <Label fx:id="invalid_user_pass" textFill="#f87171"
+            <Label fx:id="Invalid_User_Pass" textFill="#f87171"
                    style="-fx-font-size: 12px; -fx-font-family: 'Segoe UI';" />
 
             <VBox prefHeight="20.0" />

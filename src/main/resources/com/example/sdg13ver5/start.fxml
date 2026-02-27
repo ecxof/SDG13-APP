@@ -46,7 +46,7 @@
 
             <VBox prefHeight="32.0" />
 
-            <Text text="Welcome back"
+            <Text text="Welcome Back"
                   style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: white;" />
             <Text text="Please enter your details."
                   style="-fx-font-size: 14px; -fx-font-family: Arial; -fx-fill: #9ca3af;" />
@@ -55,7 +55,7 @@
 
             <Label text="Username"
                    style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
-            <TextField fx:id="username" promptText="Enter your username"
+            <TextField fx:id="Username" promptText="Enter your username"
                        style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
                        prefHeight="40.0" />
 
@@ -65,10 +65,10 @@
                    style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
             <AnchorPane>
                <children>
-                  <PasswordField fx:id="password" promptText="Enter your password"
+                  <PasswordField fx:id="Password" promptText="Enter your password"
                                  style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 40 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
                                  prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <TextField fx:id="passwordVisible" promptText="Enter your password" visible="false"
+                  <TextField fx:id="PasswordVisible" promptText="Enter Your Password" visible="false"
                              style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 40 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
                              prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                   <Button fx:id="togglePasswordBtn" onAction="#togglePassword" text="◎"
@@ -79,7 +79,7 @@
 
             <VBox prefHeight="8.0" />
 
-            <Label fx:id="invalid_user_pass" textFill="#f87171"
+            <Label fx:id="Invalid_User_Pass" textFill="#f87171"
                    style="-fx-font-size: 12px; -fx-font-family: 'Segoe UI';" />
 
             <VBox prefHeight="20.0" />

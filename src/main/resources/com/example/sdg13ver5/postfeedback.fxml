@@ -5,27 +5,56 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
    <children>
-      <!-- Card with shadow -->
-      <Pane layoutX="150.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" styleClass="card" style="-fx-background-color: white; -fx-background-radius: 20;">
+      <!-- Background Gradient -->
+      <javafx.scene.shape.Rectangle height="720.0" width="1280.0" mouseTransparent="true"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <fill>
+            <javafx.scene.paint.LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <javafx.scene.paint.Stop color="#111827">
+                     <offset>0.0</offset>
+                  </javafx.scene.paint.Stop>
+                  <javafx.scene.paint.Stop color="#1f2937">
+                     <offset>1.0</offset>
+                  </javafx.scene.paint.Stop>
+               </stops>
+            </javafx.scene.paint.LinearGradient>
+         </fill>
+      </javafx.scene.shape.Rectangle>
+
+      <!-- Success Header -->
+      <VBox spacing="15.0" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
          <children>
-            <Text fill="#166534" layoutX="32.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thanks for your">
-               <font>
-                  <Font name="Arial Bold" size="30.0" />
-               </font>
-            </Text>
-            <Text fill="#166534" layoutX="76.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="opinion!">
-               <font>
-                  <Font name="Arial Bold" size="30.0" />
-               </font>
-            </Text>
-            <Button layoutX="88.0" layoutY="220.0" mnemonicParsing="false" onAction="#feedtomain" text="Back to home" styleClass="btn-primary">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
+            <Label style="-fx-font-family: 'Arial Bold'; -fx-font-size: 64px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 1);"
+                   text="Success" textFill="WHITE" wrapText="true" />
+            <Label maxWidth="650.0" style="-fx-font-size: 19px; -fx-font-family: Arial; -fx-line-spacing: 3;"
+                   text="Your feedback has been successfully submitted. Thank you for contributing to a better SDG-13 experience."
+                   textFill="rgba(255,255,255,0.9)" wrapText="true" />
          </children>
-      </Pane>
+      </VBox>
+
+      <!-- Thanks Card -->
+      <VBox alignment="CENTER" spacing="32.0"
+            style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 30, 0, 0, 8);"
+            AnchorPane.topAnchor="280.0" AnchorPane.bottomAnchor="120.0"
+            AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0">
+         <padding><Insets top="48.0" right="48.0" bottom="48.0" left="48.0" /></padding>
+         <children>
+            <Label text="✨" style="-fx-font-size: 64px;" />
+            <VBox alignment="CENTER" spacing="8.0">
+               <children>
+                  <Label text="Thanks For Your Opinion!"
+                         style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
+                  <Label text="Your voice helps us make a difference."
+                         style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #6b7280;" />
+               </children>
+            </VBox>
+            <Button onAction="#feedtomain" text="Back To Home"
+                    style="-fx-background-color: #065f46; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-cursor: hand; -fx-font-size: 16px;"
+                    prefHeight="50.0" prefWidth="200.0" />
+         </children>
+      </VBox>
    </children>
-</Pane>
+</AnchorPane>

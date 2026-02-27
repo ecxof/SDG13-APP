@@ -20,26 +20,17 @@
       <HBox BorderPane.alignment="TOP_LEFT">
          <children>
 
-            <!-- PERMANENT HAMBURGER STRIP (always visible, 52px) -->
-            <VBox prefWidth="52.0" style="-fx-background-color: #2e2e2e;">
+            <!-- COLLAPSIBLE NAV RAIL (fx:id="navRail") -->
+            <VBox fx:id="navRail" prefWidth="240.0" style="-fx-background-color: #111827;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#toggleNav"
-                          prefHeight="60.0" prefWidth="52.0"
+                  <Button fx:id="navToggleBtn" mnemonicParsing="false" onAction="#toggleNav"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 22px; -fx-cursor: hand;"
                           text="≡" />
-               </children>
-            </VBox>
-
-            <!-- COLLAPSIBLE NAV RAIL (fx:id="navRail") -->
-            <VBox fx:id="navRail" prefWidth="185.0" style="-fx-background-color: #3c3c3c;">
-               <children>
-
-                  <!-- Spacer to align with hamburger row height -->
-                  <Region prefHeight="60.0" prefWidth="185.0" style="-fx-background-color: #2e2e2e;" />
 
                   <!-- Search Button -->
                   <Button fx:id="searchBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#searchbox"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: #4f5057; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
                           text="🔍  Search">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
@@ -48,31 +39,31 @@
 
                   <!-- Navigation Buttons -->
                   <Button fx:id="button1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pageone"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
-                          text="🌱  Improve education">
+                          text="🌱  Improve Education">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
 
                   <Button fx:id="button2" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagetwo"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
-                          text="📢  Awareness-raising">
+                          text="📢  Awareness-Raising">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
 
                   <Button fx:id="button3" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagethree"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
-                          text="👥  Human impact">
+                          text="👥  Human Impact">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
 
                   <Button fx:id="button4" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagefour"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
                           text="🔄  Adaptation">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
@@ -80,17 +71,17 @@
                   </Button>
 
                   <Button fx:id="button5" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagefive"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
-                          text="🔰  Impact reduction">
+                          text="🔰  Impact Reduction">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
 
                   <Button fx:id="button6" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#pagesix"
-                          prefHeight="52.0" prefWidth="185.0"
+                          prefHeight="52.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #d1d5db; -fx-font-size: 15px; -fx-font-family: 'Segoe UI';"
-                          text="🔔  Early warning">
+                          text="🔔  Early Warning">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
@@ -99,24 +90,24 @@
                   <Region VBox.vgrow="ALWAYS" />
 
                   <!-- Bottom Actions -->
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sharepage"
-                          prefHeight="48.0" prefWidth="185.0"
+                  <Button fx:id="shareBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#sharepage"
+                          prefHeight="48.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #9ca3af; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
                           text="🔗  Share">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tofeedback"
-                          prefHeight="48.0" prefWidth="185.0"
+                  <Button fx:id="feedbackBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tofeedback"
+                          prefHeight="48.0" prefWidth="240.0"
                           style="-fx-background-color: transparent; -fx-text-fill: #9ca3af; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
                           text="💬  Feedback">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
                      <padding><Insets left="12.0" /></padding>
                   </Button>
 
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#exit"
-                          prefHeight="48.0" prefWidth="185.0"
+                  <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#exit"
+                          prefHeight="48.0" prefWidth="240.0"
                           style="-fx-background-color: #991b1b; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"
                           text="  ✕  Exit">
                      <cursor><Cursor fx:constant="HAND" /></cursor>
@@ -139,16 +130,22 @@
                         AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 
-            <!-- Global Logo Overlay -->
-            <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true"
-                       AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="60.0">
-               <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
-            </ImageView>
+            <!-- Header Bar -->
+            <AnchorPane prefHeight="70.0" style="-fx-background-color: #111827;"
+                        AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <!-- Global Logo Overlay -->
+                  <ImageView fitHeight="44.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true"
+                             AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="13.0">
+                     <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
+                  </ImageView>
 
-            <!-- Global Title -->
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="SDG-13"
-                  style="-fx-font-size: 44px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI', Arial; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 6, 0, 0, 2);"
-                  AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="62.0" />
+                  <!-- Global Title -->
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="SDG-13"
+                        style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI', Arial;"
+                        AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="22.0" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>

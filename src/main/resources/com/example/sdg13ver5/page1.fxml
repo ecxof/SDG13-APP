@@ -41,7 +41,7 @@
                    text="Comprehensive Climate Education" />
             <Label fx:id="bodyLabel" alignment="CENTER"
                    style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
-                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+                   text="Climate Change Education supports SDG-13 by building awareness and skills from early childhood to secondary school, teaching climate science, mitigation, adaptation, and sustainable behaviors, with a focus on vulnerable communities." wrapText="true" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

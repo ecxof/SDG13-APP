@@ -43,7 +43,7 @@
                    text="Impact Reduction" />
             <Label fx:id="bodyLabel" alignment="CENTER"
                    style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
-                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+                   text="Although often overlooked, aviation significantly contributes to climate change through CO₂ emissions and high-altitude contrails. Mitigation options include airspace reconfiguration, vertical sector adjustments, and lowering cruising altitudes to reduce climate impacts." wrapText="true" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

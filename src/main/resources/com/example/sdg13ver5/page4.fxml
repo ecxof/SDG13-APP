@@ -43,7 +43,7 @@
                    text="Adaptation" />
             <Label fx:id="bodyLabel" alignment="CENTER"
                    style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
-                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+                   text="Climate change is a cross-cutting issue requiring urgent action. Mozambique is proactively addressing it through coordinated climate groups and support. Sustainability, understood as long-term resource management within social–ecological systems, is central to effective climate adaptation." wrapText="true" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

@@ -43,7 +43,7 @@
                    text="Human Impact" />
             <Label fx:id="bodyLabel" alignment="CENTER"
                    style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
-                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+                   text="SDG-13 and SDG-3 are closely linked, as climate change threatens health through extreme weather, disease spread, and social instability. Cutting emissions by 2030 can limit warming to 1.5°C while delivering major health, economic, and societal benefits." wrapText="true" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

@@ -43,7 +43,7 @@
                    text="Awareness Raising" />
             <Label fx:id="bodyLabel" alignment="CENTER"
                    style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
-                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+                   text="Climate change is intensifying extreme weather, harming food security, health, infrastructure, and basic services. Since 1880, global temperatures rose 0.85°C, sea levels increased 19 cm, Arctic ice declined, and CO₂ emissions rose nearly 50% since 1990." wrapText="true" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

@@ -43,7 +43,7 @@
                    text="Early Warning" />
             <Label fx:id="bodyLabel" alignment="CENTER"
                    style="-fx-font-size: 16px; -fx-font-family: Arial; -fx-text-fill: #374151; -fx-line-spacing: 5;"
-                   text="" wrapText="true" VBox.vgrow="ALWAYS" />
+                   text="Throughout history, catastrophic events have occurred when the Earth reached critical tipping points. Studying past extreme climate events provides early warnings, as once-rare incidents are becoming common, allowing patterns to be identified to help prevent or mitigate future climate disasters." wrapText="true" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </children>

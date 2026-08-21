@@ -486,7 +486,7 @@ public class Controller {
     // searchbar data
     public void searchvalue(String selectednode) throws IOException {
         switch (selectednode) {
-            case "[education and awareness-rising]":
+            case "[education and awareness-raising]":
                 pageone();
                 break;
             case "[human and institutional capacity]":

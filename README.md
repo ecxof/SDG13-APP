@@ -5,20 +5,21 @@
 </p>
 
 <p align="center">
-  <a href="#-about"><img src="https://img.shields.io/badge/UN-SDG%2013-3F7E44?style=for-the-badge&logo=united-nations&logoColor=white" alt="SDG 13"/></a>
+  <a href="#about"><img src="https://img.shields.io/badge/UN-SDG%2013-3F7E44?style=for-the-badge&logo=united-nations&logoColor=white" alt="SDG 13"/></a>
   <img src="https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java 21"/>
-  <img src="https://img.shields.io/badge/JavaFX-21-007396?style=for-the-badge&logo=java&logoColor=white" alt="JavaFX 21"/>
+  <img src="https://img.shields.io/badge/JavaFX-21--ea-007396?style=for-the-badge&logo=java&logoColor=white" alt="JavaFX 21-ea"/>
   <img src="https://img.shields.io/badge/Maven-3.9+-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" alt="Maven"/>
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
 </p>
 
 <p align="center">
-  <a href="#-features">Features</a> •
-  <a href="#-tech-stack">Tech Stack</a> •
-  <a href="#-getting-started">Getting Started</a> •
-  <a href="#-project-structure">Project Structure</a> •
-  <a href="#-screenshots">Screenshots</a> •
-  <a href="#-contributing">Contributing</a>
+  <a href="#features">Features</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#getting-started">Getting Started</a> •
+  <a href="#project-structure">Project Structure</a> •
+  <a href="#architecture">Architecture</a> •
+  <a href="#educational-modules">Educational Modules</a> •
+  <a href="#configuration">Configuration</a>
 </p>
 
 ---
@@ -74,17 +75,17 @@ The platform features a role-based system with both **user** and **admin** porta
 | Component          | Technology                                                                    |
 | :----------------- | :---------------------------------------------------------------------------- |
 | **Language**        | Java 21                                                                       |
-| **UI Framework**    | JavaFX 21                                                                     |
+| **UI Framework**    | JavaFX 21-ea+24 (early-access build, set in `pom.xml`)                        |
 | **UI Extensions**   | ControlsFX 11.1.2                                                             |
 | **Build Tool**      | Apache Maven 3.9+                                                             |
 | **Architecture**    | MVC (Model-View-Controller)                                                   |
-| **View Layer**      | FXML (18 view files)                                                          |
+| **View Layer**      | FXML (20 view files)                                                          |
 | **Data Storage**    | File I/O (Text-based persistence)                                             |
-| **Testing**         | JUnit 5 (Jupiter 5.9.2)                                                       |
+| **Testing**         | JUnit 5 (Jupiter 5.9.2) declared in `pom.xml`; no test classes written yet     |
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -98,8 +99,8 @@ Ensure you have the following installed:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/SDG-13-Climate-Action.git
-cd SDG-13-Climate-Action
+git clone https://github.com/ecxof/SDG13-APP.git
+cd SDG13-APP
 
 # 2. Build the project
 mvn clean install
@@ -111,6 +112,11 @@ mvn clean javafx:run
 > [!TIP]
 > If you're using **IntelliJ IDEA**, simply open the project as a Maven project and run the `Application.java` main class directly.
 
+> [!IMPORTANT]
+> Run the application from the **project root**. The six `Page_*_Data.txt` files are
+> opened by relative path, so they resolve against the current working directory. If you
+> launch from a different directory the pages load but display no content.
+
 ### Default Credentials
 
 | Role    | Username | Password |
@@ -120,10 +126,10 @@ mvn clean javafx:run
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
-SDG-13-ver5/
+SDG13-APP/
 ├──  pom.xml                          # Maven project configuration
 ├──  mvnw / mvnw.cmd                  # Maven wrapper scripts
 ├──  Page_One_Data.txt                 # Education & Awareness content
@@ -154,6 +160,8 @@ SDG-13-ver5/
         ├── adminlogin.fxml              # Admin login screen
         ├── adminpage.fxml               # Admin dashboard
         ├── adminpage1.fxml — adminpage6.fxml  # Admin content editors
+        ├── styles.css                   # Application stylesheet
+        ├── hello-view.fxml              # Unused JavaFX archetype leftover
         └── image/                       # Application assets & icons
 ```
 
@@ -217,7 +225,15 @@ The application covers **6 key targets** of SDG 13:
 
 ### Customizing Content
 
-Educational content is stored in plain text files at the project root. Admins can edit content either through the **Admin Dashboard** in the application or by directly editing:
+Educational content is stored in plain text files at the project root. Admins can edit
+content either through the **Admin Dashboard** in the application or by directly editing
+the files below.
+
+> [!NOTE]
+> The Admin Dashboard editor caps each page at **300 characters**. Longer text is
+> rejected with a "Too long!" message and is not saved. Editing the `.txt` files
+> directly bypasses that limit.
+
 
 ```
 Page_One_Data.txt     →  Improve Education
@@ -227,6 +243,21 @@ Page_Four_Data.txt    →  Adaptation
 Page_Five_Data.txt    →  Impact Reduction
 Page_Six_Data.txt     →  Early Warning
 ```
+
+## Known Limitations
+
+- **Search matches topic keywords, not page content.** `Controller2` filters a fixed
+  list of six SDG-13.3 terms; words that appear inside the `Page_*_Data.txt` content are
+  not searchable
+- **Two search terms do not match their destination page.** `human and institutional
+  capacity` opens page 2 (*Awareness-Raising*) and `mitigation planning` opens page 3
+  (*Human Impact*). There is no search entry for *Awareness-Raising* and no page for
+  mitigation
+- **Authentication is a hardcoded demo.** Credentials are compared as literal strings;
+  there is no user store, password hashing, or session handling
+- **No automated tests.** JUnit 5 is configured in `pom.xml` but no test classes exist
+
+---
 
 ## Acknowledgements
 

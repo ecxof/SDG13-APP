@@ -18,7 +18,7 @@ public class Controller2 implements Initializable {
 
     // Array For Storing Data For SearchBar
     ArrayList<String> words = new ArrayList<>(
-            Arrays.asList("education and awareness-rising",
+            Arrays.asList("education and awareness-raising",
                     "human and institutional capacity",
                     "mitigation planning",
                     "adaptation planning",

@@ -5,94 +5,68 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="530.0" prefWidth="880.0"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.sdg13ver5.Controller">
-   <children>
+<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.sdg13ver5.StartController"
+          styleClass="auth-shell"
+          hgap="0" vgap="0">
+    <columnConstraints>
+        <javafx.scene.layout.ColumnConstraints percentWidth="42"/>
+        <javafx.scene.layout.ColumnConstraints percentWidth="58"/>
+    </columnConstraints>
+    <rowConstraints>
+        <javafx.scene.layout.RowConstraints vgrow="ALWAYS"/>
+    </rowConstraints>
 
-      <!-- RIGHT: background photo -->
-      <ImageView fitHeight="530.0" fitWidth="570.0" pickOnBounds="true" preserveRatio="false"
-                 mouseTransparent="true"
-                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
-         <image><Image url="@image/bg-main.jpg" /></image>
-      </ImageView>
-      <Rectangle fill="rgba(0,0,0,0.40)" height="530.0" width="570.0" mouseTransparent="true"
-                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <!-- Brand panel -->
+    <VBox styleClass="auth-brand" spacing="20" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <ImageView fitHeight="88" preserveRatio="true">
+            <image><Image url="@image/Sustainable_Development_Goal_13.png"/></image>
+        </ImageView>
+        <Label styleClass="auth-brand-title" text="SDG-13"/>
+        <Label styleClass="auth-brand-tagline"
+               text="Climate Action starts here.&#10;Learn, adapt, and drive change with the UN Sustainable Development Goal 13."
+               wrapText="true"/>
+        <Region VBox.vgrow="ALWAYS"/>
+        <Label styleClass="auth-brand-tagline" text="© United Nations SDG-13" />
+    </VBox>
 
-      <!-- LEFT: dark grey panel -->
-      <VBox prefWidth="310.0" spacing="0.0"
-            style="-fx-background-color: #3c3c3c;"
-            AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
-         <padding><Insets top="48.0" right="28.0" bottom="28.0" left="28.0" /></padding>
-         <children>
-            <HBox alignment="CENTER_LEFT" spacing="12.0">
-               <children>
-                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image><Image url="@image/Sustainable_Development_Goal_13.png" /></image>
-                  </ImageView>
-                  <Text text="SDG-13"
-                        style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: #4ade80;" />
-               </children>
-            </HBox>
+    <!-- Sign-in form -->
+    <VBox styleClass="auth-form" GridPane.columnIndex="1" GridPane.rowIndex="0" alignment="CENTER_LEFT">
+        <padding><Insets top="60" right="60" bottom="60" left="60"/></padding>
 
-            <VBox prefHeight="32.0" />
+        <Label styleClass="auth-heading" text="Welcome back"/>
+        <Label styleClass="auth-sub" text="Sign in to continue exploring climate action."/>
 
-            <Text text="Welcome Back"
-                  style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-fill: white;" />
-            <Text text="Please enter your details."
-                  style="-fx-font-size: 14px; -fx-font-family: Arial; -fx-fill: #9ca3af;" />
+        <Region prefHeight="18"/>
 
-            <VBox prefHeight="32.0" />
+        <Label text="Username"/>
+        <TextField fx:id="username" promptText="Your username"/>
 
-            <Label text="Username"
-                   style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
-            <TextField fx:id="Username" promptText="Enter your username"
-                       style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 12 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
-                       prefHeight="40.0" />
+        <Region prefHeight="8"/>
 
-            <VBox prefHeight="20.0" />
+        <Label text="Password"/>
+        <HBox spacing="6" alignment="CENTER_LEFT">
+            <PasswordField fx:id="password" promptText="Your password" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="passwordVisible" promptText="Your password" HBox.hgrow="ALWAYS"
+                       managed="false" visible="false"/>
+            <Button fx:id="togglePasswordBtn" styleClass="icon-button" onAction="#togglePassword">
+                <graphic><FontIcon fx:id="togglePasswordIcon" iconLiteral="fth-eye"/></graphic>
+            </Button>
+        </HBox>
 
-            <Label text="Password"
-                   style="-fx-font-size: 13px; -fx-font-family: 'Segoe UI'; -fx-text-fill: #d1d5db; -fx-padding: 0 0 4 0;" />
-            <AnchorPane>
-               <children>
-                  <PasswordField fx:id="Password" promptText="Enter your password"
-                                 style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 40 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
-                                 prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <TextField fx:id="PasswordVisible" promptText="Enter Your Password" visible="false"
-                             style="-fx-background-color: #4b5563; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #6b7280; -fx-border-width: 1; -fx-padding: 10 40 10 12; -fx-font-size: 14px; -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
-                             prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <Button fx:id="togglePasswordBtn" onAction="#togglePassword" text="◎"
-                          style="-fx-background-color: transparent; -fx-text-fill: #9ca3af; -fx-cursor: hand; -fx-font-size: 16px;"
-                          AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="4.0" />
-               </children>
-            </AnchorPane>
+        <Label fx:id="errorLabel" styleClass="field-error" text=""/>
 
-            <VBox prefHeight="8.0" />
+        <Region prefHeight="10"/>
 
-            <Label fx:id="Invalid_User_Pass" textFill="#f87171"
-                   style="-fx-font-size: 12px; -fx-font-family: 'Segoe UI';" />
-
-            <VBox prefHeight="20.0" />
-
-            <Button onAction="#login" text="Sign In" maxWidth="Infinity" prefHeight="44.0"
-                    style="-fx-background-color: #166534; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI'; -fx-background-radius: 8; -fx-cursor: hand;" />
-
-            <VBox prefHeight="16.0" />
-
-            <Button onAction="#logtoadmin" text="Admin Login" maxWidth="Infinity" prefHeight="40.0"
-                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI'; -fx-border-color: #6b7280; -fx-border-radius: 8; -fx-background-radius: 8; -fx-cursor: hand;" />
-         </children>
-      </VBox>
-
-   </children>
-</AnchorPane>
+        <Button styleClass="button, accent-primary" text="Sign in" onAction="#login" maxWidth="Infinity"/>
+        <Button styleClass="button" text="Admin login" onAction="#toAdminLogin" maxWidth="Infinity"/>
+    </VBox>
+</GridPane>

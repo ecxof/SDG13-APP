@@ -3,79 +3,47 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.sdg13ver5.Controller">
-   <children>
-      <!-- Background Gradient -->
-      <javafx.scene.shape.Rectangle height="720.0" width="1280.0" mouseTransparent="true"
-                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <fill>
-            <javafx.scene.paint.LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <javafx.scene.paint.Stop color="#111827">
-                     <offset>0.0</offset>
-                  </javafx.scene.paint.Stop>
-                  <javafx.scene.paint.Stop color="#1f2937">
-                     <offset>1.0</offset>
-                  </javafx.scene.paint.Stop>
-               </stops>
-            </javafx.scene.paint.LinearGradient>
-         </fill>
-      </javafx.scene.shape.Rectangle>
-      <!-- Header Section -->
-      <VBox spacing="15.0" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
-         <children>
-            <Label style="-fx-font-family: 'Arial Bold'; -fx-font-size: 64px; -fx-font-weight: bold; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 1);"
-                   text="Feedback" textFill="WHITE" wrapText="true" />
-            <Label maxWidth="650.0" style="-fx-font-size: 19px; -fx-font-family: Arial; -fx-line-spacing: 3;"
-                   text="We'd love to hear your thoughts about SDG-13. Help us shape a more sustainable future."
-                   textFill="rgba(255,255,255,0.9)" wrapText="true" />
-         </children>
-      </VBox>
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.sdg13ver5.FeedbackController"
+           styleClass="feedback-shell">
 
-      <!-- Feedback Card -->
-      <VBox spacing="24.0"
-            style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 30, 0, 0, 8);"
-            AnchorPane.topAnchor="240.0" AnchorPane.bottomAnchor="60.0"
-            AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0">
-         <padding><Insets top="40.0" right="48.0" bottom="40.0" left="48.0" /></padding>
-         <children>
-            <VBox spacing="12.0">
-               <children>
-                  <Label text="Your Name"
-                         style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
-                  <TextField fx:id="feedname" promptText="e.g. John Smith"
-                             style="-fx-background-color: #f9fafb; -fx-border-color: #e5e7eb; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 14 16; -fx-font-size: 14px;" />
-               </children>
+    <VBox styleClass="card" spacing="14" maxWidth="640">
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <FontIcon iconLiteral="fth-message-square" iconSize="26"/>
+            <VBox>
+                <Label styleClass="card-heading" text="Share your feedback"/>
+                <Label styleClass="muted" text="Suggestions help us improve climate education."/>
             </VBox>
+        </HBox>
 
-            <VBox spacing="12.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Label text="Your Suggestion"
-                         style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-font-family: 'Arial Bold'; -fx-text-fill: #111827;" />
-                  <TextField fx:id="feedsugg" alignment="TOP_LEFT" prefHeight="180.0" promptText="What can we improve?"
-                             style="-fx-background-color: #f9fafb; -fx-border-color: #e5e7eb; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 16; -fx-font-size: 14px;" />
-               </children>
-            </VBox>
+        <Region prefHeight="6"/>
 
-            <AnchorPane prefHeight="44.0">
-               <children>
-                  <Button onAction="#feedtomain" text="← Back"
-                          style="-fx-background-color: transparent; -fx-border-color: #e5e7eb; -fx-border-radius: 8; -fx-background-radius: 8; -fx-text-fill: #6b7280; -fx-cursor: hand;"
-                          AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" prefHeight="44.0" prefWidth="100.0" />
-                  <Button onAction="#topostfeedback" text="Submit →"
-                          style="-fx-background-color: #065f46; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;"
-                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" prefHeight="44.0" prefWidth="140.0" />
-               </children>
-            </AnchorPane>
-            <Label fx:id="feed_label" textFill="#f87171" style="-fx-font-size: 12px;" />
-         </children>
-      </VBox>
-   </children>
-</AnchorPane>
+        <Label text="Your name"/>
+        <TextField fx:id="nameField" promptText="e.g. Jane Doe"/>
+
+        <Label text="Your suggestion"/>
+        <TextArea fx:id="suggestionArea" promptText="Tell us what could be better…"
+                  wrapText="true" prefRowCount="6"/>
+
+        <Label fx:id="errorLabel" styleClass="field-error" text=""/>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Back" onAction="#back">
+                <graphic><FontIcon iconLiteral="fth-arrow-left"/></graphic>
+            </Button>
+            <Button styleClass="button, accent-primary" text="Submit" onAction="#submit">
+                <graphic><FontIcon iconLiteral="fth-send" iconColor="white"/></graphic>
+            </Button>
+        </HBox>
+
+        <padding><Insets top="24" right="28" bottom="24" left="28"/></padding>
+    </VBox>
+</StackPane>

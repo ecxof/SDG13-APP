@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.sdg13ver5.AdminShellController"
+            styleClass="content-surface">
+
+    <left>
+        <VBox fx:id="navRail" styleClass="nav-rail" prefWidth="260">
+            <HBox styleClass="nav-brand">
+                <FontIcon iconLiteral="fth-shield" iconSize="24"/>
+                <VBox fx:id="brandTextBox" spacing="0">
+                    <padding><Insets left="10"/></padding>
+                    <Label styleClass="nav-brand-title" text="SDG-13 Admin"/>
+                    <Label styleClass="nav-brand-sub" text="Content editor"/>
+                </VBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="navToggleBtn" styleClass="icon-button" onAction="#toggleNav">
+                    <graphic><FontIcon iconLiteral="fth-menu"/></graphic>
+                </Button>
+            </HBox>
+
+            <VBox fx:id="navContainer" spacing="2"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <VBox fx:id="navFooter" spacing="2"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox>
+            <HBox styleClass="top-bar" alignment="CENTER_LEFT">
+                <Label fx:id="pageTitle" styleClass="top-title" text="Select a topic"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="themeBtn" styleClass="icon-button" onAction="#toggleTheme">
+                    <graphic><FontIcon fx:id="themeIcon" iconLiteral="fth-moon"/></graphic>
+                </Button>
+            </HBox>
+            <StackPane fx:id="contentHost" VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </center>
+</BorderPane>

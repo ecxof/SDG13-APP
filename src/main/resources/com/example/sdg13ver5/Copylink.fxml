@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="500.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sdg13ver5.Controller">
-   <children>
-      <Label layoutX="22.0" layoutY="14.0" text="Share link" styleClass="share-title">
-      </Label>
-      <Label layoutX="22.0" layoutY="44.0" text="https://sdgs.un.org/goals/goal13" styleClass="share-url">
-      </Label>
-      <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="436.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/copy.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="436.0" layoutY="21.0" mnemonicParsing="false" onAction="#copy_to_clip" opacity="0.0" prefHeight="40.0" prefWidth="40.0" text="Button" accessibleText="Copy share link to clipboard" />
-      <Label fx:id="successcopied" layoutX="22.0" layoutY="72.0" prefHeight="17.0" prefWidth="200.0" styleClass="share-success" />
-   </children>
-</Pane>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.sdg13ver5.ShareController"
+      spacing="12" prefWidth="500">
+    <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <FontIcon iconLiteral="fth-share-2" iconSize="20"/>
+        <Label styleClass="share-title" text="Share this page"/>
+    </HBox>
+
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <TextField fx:id="urlField" styleClass="share-url" editable="false" HBox.hgrow="ALWAYS"/>
+        <Button styleClass="button, accent-primary" text="Copy" onAction="#copyToClipboard">
+            <graphic><FontIcon iconLiteral="fth-copy" iconColor="white"/></graphic>
+        </Button>
+    </HBox>
+
+    <Label fx:id="successLabel" styleClass="share-success" text=""/>
+</VBox>

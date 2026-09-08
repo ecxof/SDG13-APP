@@ -68,8 +68,15 @@ public final class NavRail {
         collapsed = !collapsed;
         rail.setPrefWidth(collapsed ? COLLAPSED_WIDTH : EXPANDED_WIDTH);
         rail.setMinWidth(collapsed ? COLLAPSED_WIDTH : EXPANDED_WIDTH);
-        brandText.setVisible(!collapsed);
-        brandText.setManaged(!collapsed);
+
+        // Keep only the toggle button (and any other Button) visible in the
+        // brand row when collapsed — the logo/wordmark are too wide for 72px.
+        for (Node sibling : brandBox.getChildrenUnmodifiable()) {
+            if (sibling instanceof Button) continue;
+            sibling.setVisible(!collapsed);
+            sibling.setManaged(!collapsed);
+        }
+
         for (Node n : railButtons(rail)) {
             if (n instanceof Button b && b.getProperties().containsKey("nav-label")) {
                 b.setText(collapsed ? "" : (String) b.getProperties().get("nav-label"));

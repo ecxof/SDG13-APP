@@ -7,6 +7,7 @@ module com.example.sdg13ver5 {
     requires atlantafx.base;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.feather;
 
     requires java.prefs;
 

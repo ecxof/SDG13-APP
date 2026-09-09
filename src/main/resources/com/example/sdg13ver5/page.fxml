@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<ScrollPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.sdg13ver5.PageController"
+            fitToWidth="true" fitToHeight="false"
+            hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+            styleClass="edge-to-edge">
+
+    <content>
+        <VBox spacing="0">
+            <VBox fx:id="hero" styleClass="hero" spacing="10">
+                <padding><Insets top="36" right="48" bottom="32" left="48"/></padding>
+                <HBox spacing="18" alignment="CENTER_LEFT">
+                    <FontIcon fx:id="heroIcon" styleClass="hero-icon" iconLiteral="fth-book-open"/>
+                    <VBox spacing="6">
+                        <Label fx:id="heroEyebrow" styleClass="hero-eyebrow" text="SDG-13 · TOPIC"/>
+                        <Label fx:id="heroTitle" styleClass="hero-title" text="Topic title"/>
+                    </VBox>
+                </HBox>
+                <Label fx:id="heroSub" styleClass="hero-sub" text="Topic subtitle" wrapText="true"/>
+            </VBox>
+
+            <VBox>
+                <padding><Insets top="24" right="48" bottom="48" left="48"/></padding>
+                <VBox styleClass="card" spacing="14">
+                    <Label fx:id="cardHeading" styleClass="card-heading" text="Overview"/>
+                    <Region prefHeight="4"/>
+                    <Label fx:id="bodyLabel" styleClass="card-body" text="" wrapText="true"/>
+                </VBox>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>

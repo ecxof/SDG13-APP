@@ -4,9 +4,15 @@ module com.example.sdg13ver5 {
     requires transitive javafx.base;
     requires transitive javafx.graphics;
 
-    requires org.controlsfx.controls;
+    requires atlantafx.base;
+    requires org.kordamp.ikonli.core;
+    requires org.kordamp.ikonli.javafx;
+    requires org.kordamp.ikonli.feather;
+
+    requires java.prefs;
 
     opens com.example.sdg13ver5 to javafx.fxml;
 
     exports com.example.sdg13ver5;
+    exports com.example.sdg13ver5.model;
 }

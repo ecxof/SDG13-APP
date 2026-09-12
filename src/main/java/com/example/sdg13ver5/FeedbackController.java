@@ -1,5 +1,6 @@
 package com.example.sdg13ver5;
 
+import com.example.sdg13ver5.model.Feedback;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.Instant;
 
 public class FeedbackController {
 
@@ -33,6 +35,12 @@ public class FeedbackController {
         String sugg = suggestionArea.getText();
         if (name == null || name.isBlank() || sugg == null || sugg.isBlank()) {
             errorLabel.setText("Please add both your name and a suggestion.");
+            return;
+        }
+        try {
+            FeedbackStore.append(new Feedback(Instant.now(), name.trim(), sugg.trim()));
+        } catch (IOException e) {
+            errorLabel.setText("Could not save feedback: " + e.getMessage());
             return;
         }
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

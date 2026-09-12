@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.sdg13ver5.AdminFeedbackController"
+      spacing="16">
+    <padding><Insets top="28" right="40" bottom="28" left="40"/></padding>
+
+    <HBox spacing="14" alignment="CENTER_LEFT">
+        <FontIcon iconLiteral="fth-message-square" iconSize="28"/>
+        <VBox spacing="2">
+            <Label styleClass="card-heading" text="User feedback"/>
+            <Label fx:id="pathLabel" styleClass="muted" text=""/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Refresh" onAction="#refresh">
+            <graphic><FontIcon iconLiteral="fth-refresh-cw"/></graphic>
+        </Button>
+    </HBox>
+
+    <VBox styleClass="card" spacing="10" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="countLabel" text="0 submissions"/>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <TableView fx:id="table" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="whenCol" text="Submitted" prefWidth="180"/>
+                <TableColumn fx:id="nameCol" text="Name" prefWidth="180"/>
+                <TableColumn fx:id="suggestionCol" text="Suggestion" prefWidth="640"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>

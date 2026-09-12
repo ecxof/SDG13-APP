@@ -40,12 +40,26 @@ public class AdminShellController {
             navContainer.getChildren().add(b);
         }
 
-        navFooter.getChildren().add(
+        Button feedbackBtn = rail.addActionButton("fth-message-square", "Feedback inbox", false, this::showFeedback);
+        navFooter.getChildren().addAll(
+                feedbackBtn,
                 rail.addActionButton("fth-log-out", "Exit to login", true, this::exit)
         );
 
         updateThemeIcon();
         edit(Topics.ALL.get(0));
+    }
+
+    private void showFeedback() {
+        try {
+            FXMLLoader loader = new FXMLLoader(Application.class.getResource("adminfeedback.fxml"));
+            Parent view = loader.load();
+            contentHost.getChildren().setAll(view);
+            pageTitle.setText("User feedback");
+            rail.setActive(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void edit(Topic topic) {

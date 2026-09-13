@@ -59,7 +59,7 @@ public class MainShellController {
             FXMLLoader loader = new FXMLLoader(Application.class.getResource("page.fxml"));
             Parent view = loader.load();
             PageController pc = loader.getController();
-            pc.setTopic(topic);
+            pc.setTopic(topic, this::showQuiz);
             contentHost.getChildren().setAll(view);
             pageTitle.setText(topic.title());
             // highlight matching nav button
@@ -68,6 +68,19 @@ public class MainShellController {
                     && navContainer.getChildren().get(i) instanceof Button b) {
                 rail.setActive(b);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showQuiz(Topic topic) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Application.class.getResource("quiz.fxml"));
+            Parent view = loader.load();
+            QuizController qc = loader.getController();
+            qc.setContext(topic, () -> showTopic(topic));
+            contentHost.getChildren().setAll(view);
+            pageTitle.setText("Quiz — " + topic.title());
         } catch (IOException e) {
             e.printStackTrace();
         }

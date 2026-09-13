@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.HBox?>
@@ -28,12 +29,25 @@
                 <Label fx:id="heroSub" styleClass="hero-sub" text="Topic subtitle" wrapText="true"/>
             </VBox>
 
-            <VBox>
+            <VBox spacing="20">
                 <padding><Insets top="24" right="48" bottom="48" left="48"/></padding>
                 <VBox styleClass="card" spacing="14">
                     <Label fx:id="cardHeading" styleClass="card-heading" text="Overview"/>
                     <Region prefHeight="4"/>
                     <Label fx:id="bodyLabel" styleClass="card-body" text="" wrapText="true"/>
+                </VBox>
+                <VBox styleClass="card" spacing="10">
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <FontIcon iconLiteral="fth-help-circle" iconSize="22"/>
+                        <VBox>
+                            <Label styleClass="card-heading" text="Check your understanding"/>
+                            <Label fx:id="quizStatus" styleClass="muted" text="A short quiz will help lock this in."/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="startQuizBtn" styleClass="button, accent-primary" text="Take the quiz" onAction="#startQuiz">
+                            <graphic><FontIcon iconLiteral="fth-play" iconColor="white"/></graphic>
+                        </Button>
+                    </HBox>
                 </VBox>
             </VBox>
         </VBox>

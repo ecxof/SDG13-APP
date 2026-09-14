@@ -48,15 +48,15 @@
         <Region prefHeight="18"/>
 
         <Label text="Username"/>
-        <TextField fx:id="username" promptText="Your username"/>
+        <TextField fx:id="username" promptText="Your username" onAction="#focusPassword"/>
 
         <Region prefHeight="8"/>
 
         <Label text="Password"/>
         <HBox spacing="6" alignment="CENTER_LEFT">
-            <PasswordField fx:id="password" promptText="Your password" HBox.hgrow="ALWAYS"/>
+            <PasswordField fx:id="password" promptText="Your password" HBox.hgrow="ALWAYS" onAction="#login"/>
             <TextField fx:id="passwordVisible" promptText="Your password" HBox.hgrow="ALWAYS"
-                       managed="false" visible="false"/>
+                       managed="false" visible="false" onAction="#login"/>
             <Button fx:id="togglePasswordBtn" styleClass="icon-button" onAction="#togglePassword">
                 <graphic><FontIcon fx:id="togglePasswordIcon" iconLiteral="fth-eye"/></graphic>
             </Button>

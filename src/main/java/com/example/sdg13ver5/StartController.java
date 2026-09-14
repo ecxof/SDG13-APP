@@ -24,6 +24,11 @@ public class StartController {
     @FXML private Label errorLabel;
 
     @FXML
+    private void focusPassword() {
+        (passwordVisible.isVisible() ? passwordVisible : password).requestFocus();
+    }
+
+    @FXML
     private void togglePassword() {
         boolean showing = passwordVisible.isVisible();
         if (showing) {
